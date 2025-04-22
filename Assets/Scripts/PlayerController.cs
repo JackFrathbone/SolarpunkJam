@@ -1,3 +1,4 @@
+using RenderHeads.Services;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
 
     private Tilemap _tileMap;
+
+    private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
     private int _currentPipes;
@@ -136,8 +139,9 @@ public class PlayerController : MonoBehaviour
     {
         if (_currentPipes > 0)
         {
-            Instantiate(_waterPipePrefab, _tileMap.GetCellCenterLocal(_gridPosition), Quaternion.identity);
+            GameObject newPipe = Instantiate(_waterPipePrefab, _tileMap.GetCellCenterLocal(_gridPosition), Quaternion.identity, _worldWaterManager.Value.transform);
             _currentPipes--;
+            newPipe.name = "Pipe" + _currentPipes.ToString();
         }
     }
 
