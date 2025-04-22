@@ -13,8 +13,8 @@ public class WaterPipe : MonoBehaviour
 
     private RaycastHit2D _hit;
 
-    private List<WaterInput> _attachedWaterInputs = new();
-    private List<WaterPipe> _attachedPipes = new();
+    private List<WaterInput> _connectedWaterInputs = new();
+    private List<WaterPipe> _connectedPipes = new();
     private List<WaterSourceController> _attachedWaterSources = new();
 
     //For keeping track of directions to raycast
@@ -44,8 +44,8 @@ public class WaterPipe : MonoBehaviour
 
     private void CheckForConnections()
     {
-        _attachedWaterInputs.Clear();
-        _attachedPipes.Clear();
+        _connectedWaterInputs.Clear();
+        _connectedPipes.Clear();
 
         gameObject.layer = 2;
 
@@ -73,11 +73,11 @@ public class WaterPipe : MonoBehaviour
 
         if (_hit.collider.CompareTag("Pipe"))
         {
-            _attachedPipes.Add(_hit.collider.GetComponent<WaterPipe>());
+            _connectedPipes.Add(_hit.collider.GetComponent<WaterPipe>());
         }
         else if (_hit.collider.CompareTag("WaterInput"))
         {
-            _attachedWaterInputs.Add(_hit.collider.GetComponent<WaterInput>());
+            _connectedWaterInputs.Add(_hit.collider.GetComponent<WaterInput>());
         }
         else if (_hit.collider.CompareTag("WaterSource"))
         {
@@ -85,7 +85,7 @@ public class WaterPipe : MonoBehaviour
         }
 
         //Set to an endpoint if it has any attached inputs
-        if (_attachedWaterInputs.Count != 0)
+        if (_connectedWaterInputs.Count != 0)
         {
             isEndpoint = true;
         }
@@ -105,11 +105,19 @@ public class WaterPipe : MonoBehaviour
 
     public List<WaterPipe> GetattachedPipes()
     {
-        return _attachedPipes;
+        return _connectedPipes;
     }
 
     public List<WaterInput> GetAttachedInputs()
     {
-        return _attachedWaterInputs;
+        return _connectedWaterInputs;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawRay(transform.position, _isometricUpRight);
+        Gizmos.DrawRay(transform.position, _isometricDownLeft);
+        Gizmos.DrawRay(transform.position, _isometricUpLeft);
+        Gizmos.DrawRay(transform.position, _isometricDownRight);
     }
 }
