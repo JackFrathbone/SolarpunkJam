@@ -11,7 +11,7 @@ public class Blocker : MonoBehaviour
     [Header("Data")]
     private Color _startColour;
 
-    private void Start()
+    private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();

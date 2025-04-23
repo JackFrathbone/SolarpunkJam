@@ -5,7 +5,7 @@ using UnityEngine;
 public class WorldWaterManager : MonoService
 {
     [Header("Data")]
-    private List<WaterSourceController> _waterSources = new();
+    private List<WaterSource> _waterSources = new();
     private List<WaterPipe> _waterPipes = new();
     private List<WaterInput> _waterInputs = new();
 
@@ -16,7 +16,7 @@ public class WorldWaterManager : MonoService
         FindWaterConnections();
     }
 
-    public void AddWaterSource(WaterSourceController waterSource)
+    public void AddWaterSource(WaterSource waterSource)
     {
         _waterSources.Add(waterSource);
     }
@@ -40,10 +40,10 @@ public class WorldWaterManager : MonoService
     {
         _waterPipesActive.Clear();
 
-        foreach (WaterSourceController waterSource in _waterSources)
+        foreach (WaterSource waterSource in _waterSources)
         {
 
-            if (waterSource.GetConnectedPipes().Count == 0)
+            if (waterSource.GetConnectedPipes().Count == 0 || !waterSource.GetIsPowered())
             {
                 continue;
             }

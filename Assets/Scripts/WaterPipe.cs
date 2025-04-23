@@ -15,7 +15,7 @@ public class WaterPipe : MonoBehaviour
 
     private List<WaterInput> _connectedWaterInputs = new();
     private List<WaterPipe> _connectedPipes = new();
-    private List<WaterSourceController> _attachedWaterSources = new();
+    private List<WaterSource> _attachedWaterSources = new();
 
     //For keeping track of directions to raycast
     private readonly Vector2 _isometricUpRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 30f), Mathf.Sin(Mathf.Deg2Rad * 30f)).normalized;
@@ -81,7 +81,7 @@ public class WaterPipe : MonoBehaviour
         }
         else if (_hit.collider.CompareTag("WaterSource"))
         {
-            _attachedWaterSources.Add(_hit.collider.GetComponent<WaterSourceController>());
+            _attachedWaterSources.Add(_hit.collider.GetComponent<WaterSource>());
         }
 
         //Set to an endpoint if it has any attached inputs

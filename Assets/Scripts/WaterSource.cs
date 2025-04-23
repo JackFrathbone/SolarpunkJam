@@ -2,13 +2,16 @@ using RenderHeads.Services;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterSourceController : MonoBehaviour
+public class WaterSource : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private List<PowerSource> _connectedPowerSources = new();
+
     [Header("Data")]
+    private bool _isPowered;
+
     private List<WaterPipe> _connectedPipes = new();
     private List<WaterInput> _connectedWaterInputs = new();
-
-    private List<WaterPipe> _checkedPipes = new();
 
     private RaycastHit2D _hit;
 
@@ -23,10 +26,17 @@ public class WaterSourceController : MonoBehaviour
     private void Start()
     {
         _worldWaterManager.Value.AddWaterSource(this);
+
+        InvokeRepeating("CheckPowered", Random.Range(0f, 1f), 1f);
     }
 
     private void FixedUpdate()
     {
+        if (!_isPowered)
+        {
+            return;
+        }
+
         CheckForConnections();
     }
 
@@ -74,11 +84,57 @@ public class WaterSourceController : MonoBehaviour
         return _connectedWaterInputs;
     }
 
+    public bool GetIsPowered()
+    {
+        return _isPowered;
+    }
+
+    private void CheckPowered()
+    {
+        if (_connectedPowerSources.Count == 0)
+        {
+            _isPowered = true;
+            return;
+        }
+
+        //Go through all connected power sources, if one isnt powered up then turn off this water source
+        bool poweredUp = true;
+        foreach (PowerSource powerSource in _connectedPowerSources)
+        {
+            if (!powerSource.GetIsActive())
+            {
+                poweredUp = false;
+            }
+        }
+
+        _isPowered = poweredUp;
+    }
+
     private void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.yellow;
+
+        //Draw rays for each direction of detection
         Gizmos.DrawRay(transform.position, _isometricUpRight);
         Gizmos.DrawRay(transform.position, _isometricDownLeft);
         Gizmos.DrawRay(transform.position, _isometricUpLeft);
         Gizmos.DrawRay(transform.position, _isometricDownRight);
+
+        //Draws lines to each connected powersource
+        if (_connectedPowerSources != null && _connectedPowerSources.Count > 0)
+        {
+            Gizmos.color = Color.red;
+
+            // Iterate through each GameObject in the list.
+            foreach (PowerSource powerSource in _connectedPowerSources)
+            {
+                // Make sure the target GameObject is not null.
+                if (powerSource.gameObject != null)
+                {
+                    // Draw the line from the current GameObject's position to the target's position.
+                    Gizmos.DrawLine(transform.position, powerSource.gameObject.transform.position);
+                }
+            }
+        }
     }
 }

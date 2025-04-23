@@ -210,6 +210,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &512835118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 199474048059820836, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+  m_PrefabInstance: {fileID: 2948997097249733544}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d0840aa1a790d49b4ae140e6709d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,10 +3521,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1777792003}
   - {fileID: 1016746646}
   - {fileID: 1178642618}
   - {fileID: 538633563}
-  - {fileID: 1777792003}
   - {fileID: 934603471}
   - {fileID: 595831428}
   m_Father: {fileID: 0}
@@ -4029,6 +4040,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2febe82704840448db3e0551b79ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &2948997097249733544
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 199474048059820836, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: _startActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499235533657434825, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_Name
+      value: BasePowerSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213012306268572562, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213012306268572562, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213012306268572562, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213012306268572562, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213012306268572562, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213012306268572562, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213012306268572562, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213012306268572562, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213012306268572562, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213012306268572562, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8084bed8b1504294d84b38cd88d13dfe, type: 3}
 --- !u!1001 &3862004339619077916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4081,6 +4153,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterSource
       objectReference: {fileID: 0}
+    - target: {fileID: 7090322814358156299, guid: 69d800f6485d8794db604b5d69d0df7d, type: 3}
+      propertyPath: _connectedPowerSources.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090322814358156299, guid: 69d800f6485d8794db604b5d69d0df7d, type: 3}
+      propertyPath: _connectedPowerSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 512835118}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4159,3 +4239,4 @@ SceneRoots:
   - {fileID: 1464630422}
   - {fileID: 824402307}
   - {fileID: 1826001148}
+  - {fileID: 2948997097249733544}
