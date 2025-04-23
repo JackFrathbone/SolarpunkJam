@@ -7,6 +7,9 @@ TagManager:
   - Pipe
   - WaterSource
   - WaterInput
+  - WaterPipePickup
+  - PartsPickup
+  - PowerSource
   layers:
   - Default
   - TransparentFX

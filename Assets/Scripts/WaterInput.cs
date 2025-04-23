@@ -1,15 +1,26 @@
+using RenderHeads.Services;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WaterInput : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField] private int _requiredWaterAmount = 6;
     [SerializeField] private List<Blocker> _connectedBlockers = new();
 
+    [Header("References")]
+    private LazyService<WorldWaterManager> _worldWaterManager;
+
     [Header("Data")]
+    private int _currentWaterAmount;
     private bool _hasWater;
 
+    private TextMeshPro _textMeshPro;
+
     private List<WaterPipe> _connectedPipes = new();
+    private List<WaterSource> _connectedWaterSources = new();
+
     private RaycastHit2D _hit;
 
     //For keeping track of directions to raycast
@@ -18,8 +29,16 @@ public class WaterInput : MonoBehaviour
     private readonly Vector2 _isometricUpLeft = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 150f), Mathf.Sin(Mathf.Deg2Rad * 150f)).normalized;
     private readonly Vector2 _isometricDownRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 330f), Mathf.Sin(Mathf.Deg2Rad * 330f)).normalized;
 
+    private void Awake()
+    {
+        _textMeshPro = GetComponentInChildren<TextMeshPro>();
+        _textMeshPro.text = _currentWaterAmount + "/" + _requiredWaterAmount;
+    }
+
     private void Start()
     {
+        _worldWaterManager.Value.AddWaterInput(this);
+
         Deactivate();
     }
 
@@ -76,15 +95,12 @@ public class WaterInput : MonoBehaviour
             }
         }
 
-        if (_connectedPipeHasWater != _hasWater)
-        {
-            UpdateState(_connectedPipeHasWater);
-        }
+        UpdateState(_connectedPipeHasWater);
     }
 
     private void UpdateState(bool hasWater)
     {
-        _hasWater = hasWater;
+        _hasWater = CheckHasWater();
 
         if (_hasWater)
         {
@@ -93,6 +109,27 @@ public class WaterInput : MonoBehaviour
         else
         {
             Deactivate();
+        }
+
+        _textMeshPro.text = _currentWaterAmount + "/" + _requiredWaterAmount;
+    }
+
+    private bool CheckHasWater()
+    {
+        _currentWaterAmount = 0;
+
+        foreach (WaterSource waterSource in _connectedWaterSources)
+        {
+            _currentWaterAmount += waterSource.GetWaterSourceAmount();
+        }
+
+        if (_currentWaterAmount == _requiredWaterAmount)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -110,6 +147,30 @@ public class WaterInput : MonoBehaviour
         {
             blocker.CloseBlocker();
         }
+    }
+
+    public void AddConnectedWaterSource(WaterSource waterSource)
+    {
+        if (!_connectedWaterSources.Contains(waterSource))
+        {
+            _currentWaterAmount += waterSource.GetWaterSourceAmount();
+            _connectedWaterSources.Add(waterSource);
+        }
+    }
+
+    public void RemoveConnectedWaterSource(WaterSource waterSource)
+    {
+        if (_connectedWaterSources.Contains(waterSource))
+        {
+            _currentWaterAmount -= waterSource.GetWaterSourceAmount();
+            _connectedWaterSources.Remove(waterSource);
+        }
+    }
+
+    public void ClearConnectedWaterSources()
+    {
+        _currentWaterAmount = 0;
+        _connectedWaterSources.Clear();
     }
 
     private void OnDrawGizmosSelected()

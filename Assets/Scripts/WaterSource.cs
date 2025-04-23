@@ -1,17 +1,22 @@
 using RenderHeads.Services;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WaterSource : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField, Tooltip("How much water this water source has")] private int _waterSourceAmount = 6;
     [SerializeField] private List<PowerSource> _connectedPowerSources = new();
+
+    [Header("References")]
+    [SerializeField] private TextMeshPro _textMeshPro;
+    private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
     private bool _isPowered;
 
     private List<WaterPipe> _connectedPipes = new();
-    private List<WaterInput> _connectedWaterInputs = new();
 
     private RaycastHit2D _hit;
 
@@ -21,7 +26,11 @@ public class WaterSource : MonoBehaviour
     private readonly Vector2 _isometricUpLeft = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 150f), Mathf.Sin(Mathf.Deg2Rad * 150f)).normalized;
     private readonly Vector2 _isometricDownRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 330f), Mathf.Sin(Mathf.Deg2Rad * 330f)).normalized;
 
-    private LazyService<WorldWaterManager> _worldWaterManager;
+    private void Awake()
+    {
+        _textMeshPro = GetComponentInChildren<TextMeshPro>();
+        _textMeshPro.text = _waterSourceAmount.ToString();
+    }
 
     private void Start()
     {
@@ -79,14 +88,14 @@ public class WaterSource : MonoBehaviour
         return _connectedPipes;
     }
 
-    public List<WaterInput> GetConnectedWaterInputs()
-    {
-        return _connectedWaterInputs;
-    }
-
     public bool GetIsPowered()
     {
         return _isPowered;
+    }
+
+    public int GetWaterSourceAmount()
+    {
+        return _waterSourceAmount;
     }
 
     private void CheckPowered()

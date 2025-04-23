@@ -40,10 +40,14 @@ public class WorldWaterManager : MonoService
     {
         _waterPipesActive.Clear();
 
+        foreach (WaterInput waterInput in _waterInputs)
+        {
+            waterInput.ClearConnectedWaterSources();
+        }
+
         foreach (WaterSource waterSource in _waterSources)
         {
-
-            if (waterSource.GetConnectedPipes().Count == 0 || !waterSource.GetIsPowered())
+            if (waterSource.GetConnectedPipes().Count == 0)
             {
                 continue;
             }
@@ -66,7 +70,11 @@ public class WorldWaterManager : MonoService
 
                 if (currentPipe.isEndpoint == true)
                 {
-                    Debug.Log("Found attached water source");
+                    Debug.Log("Found attached water input!");
+                    foreach (WaterInput input in currentPipe.GetAttachedInputs())
+                    {
+                        input.AddConnectedWaterSource(waterSource);
+                    }
                 }
 
                 foreach (WaterPipe neighbor in currentPipe.GetattachedPipes())
@@ -81,8 +89,7 @@ public class WorldWaterManager : MonoService
         }
 
         //Set the visuals
-
-        foreach(WaterPipe waterPipe in _waterPipes)
+        foreach (WaterPipe waterPipe in _waterPipes)
         {
             if (_waterPipesActive.Contains(waterPipe))
             {

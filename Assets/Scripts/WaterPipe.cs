@@ -7,6 +7,9 @@ public class WaterPipe : MonoBehaviour
     [Header("References")]
     private SpriteRenderer _renderer;
 
+    [Header("References")]
+    private LazyService<WorldWaterManager> _worldWaterManager;
+
     [Header("Data")]
     public bool isEndpoint;
     public bool hasWater;
@@ -15,7 +18,6 @@ public class WaterPipe : MonoBehaviour
 
     private List<WaterInput> _connectedWaterInputs = new();
     private List<WaterPipe> _connectedPipes = new();
-    private List<WaterSource> _attachedWaterSources = new();
 
     //For keeping track of directions to raycast
     private readonly Vector2 _isometricUpRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 30f), Mathf.Sin(Mathf.Deg2Rad * 30f)).normalized;
@@ -23,7 +25,6 @@ public class WaterPipe : MonoBehaviour
     private readonly Vector2 _isometricUpLeft = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 150f), Mathf.Sin(Mathf.Deg2Rad * 150f)).normalized;
     private readonly Vector2 _isometricDownRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 330f), Mathf.Sin(Mathf.Deg2Rad * 330f)).normalized;
 
-    private LazyService<WorldWaterManager> _worldWaterManager;
     private void Start()
     {
         _worldWaterManager.Value.AddWaterPipe(this);
@@ -78,10 +79,6 @@ public class WaterPipe : MonoBehaviour
         else if (_hit.collider.CompareTag("WaterInput"))
         {
             _connectedWaterInputs.Add(_hit.collider.GetComponent<WaterInput>());
-        }
-        else if (_hit.collider.CompareTag("WaterSource"))
-        {
-            _attachedWaterSources.Add(_hit.collider.GetComponent<WaterSource>());
         }
 
         //Set to an endpoint if it has any attached inputs

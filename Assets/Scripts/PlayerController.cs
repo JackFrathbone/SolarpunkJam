@@ -4,9 +4,22 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerMouseState
+    {
+        none,
+        placement,
+        powersource
+    }
+
+
     [Header("Settings")]
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private int _startingPipes = 25;
+    [SerializeField] private int _startingParts = 5;
+
+    [Header("Inventory")]
+    private int _currentPipes;
+    private int _currentParts;
 
 
     [Header("References")]
@@ -21,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
-    private int _currentPipes;
+    private PlayerMouseState _mouseState = PlayerMouseState.none;
 
     private bool _facingLeft = false;
     private bool _freezeInput = false;
@@ -39,9 +52,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 _cellCenterWorldPosition;
     private RaycastHit2D _hit;
 
+    //For Powersource
+    private PowerSource _targetPowerSource;
+
     private void Start()
     {
         _currentPipes = _startingPipes;
+        _currentParts = _startingParts;
 
         _placementPreview = transform.Find("PlacePreview").gameObject;
         _placementPreview.SetActive(false);
@@ -61,16 +78,38 @@ public class PlayerController : MonoBehaviour
 
             _mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            CheckPlacement();
+            CheckMouseState();
 
-            if (_placementPreview.activeInHierarchy && Input.GetButton("Fire1"))
+            switch (_mouseState)
             {
-                PlacePipe();
-            }
-
-            if (Input.GetButton("Fire2"))
-            {
-                RemovePipe();
+                case PlayerMouseState.none:
+                    if (Input.GetButton("Fire2"))
+                    {
+                        RemovePipe();
+                    }
+                    break;
+                case PlayerMouseState.placement:
+                    if (Input.GetButton("Fire1") && _placementPreview.activeInHierarchy)
+                    {
+                        PlacePipe();
+                    }
+                    break;
+                case PlayerMouseState.powersource:
+                    if (Input.GetButtonDown("Fire1") && _targetPowerSource != null && _currentParts > 0)
+                    {
+                        if (_targetPowerSource.AddParts())
+                        {
+                            _currentParts--;
+                        }
+                    }
+                    else if (Input.GetButtonDown("Fire2") && _targetPowerSource != null)
+                    {
+                        if (_targetPowerSource.RemoveParts())
+                        {
+                            _currentParts++;
+                        }
+                    }
+                    break;
             }
         }
     }
@@ -81,6 +120,26 @@ public class PlayerController : MonoBehaviour
         {
             CheckMovement();
             CheckLookDirection();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WaterPipePickup"))
+        {
+            WaterPipePickup pickup = collision.GetComponent<WaterPipePickup>();
+
+            _currentPipes += pickup.pipesToAdd;
+
+            Destroy(pickup.gameObject);
+        }
+        else if (collision.CompareTag("PartsPickup"))
+        {
+            PartsPickup pickup = collision.GetComponent<PartsPickup>();
+
+            _currentParts += pickup.partsToAdd;
+
+            Destroy(pickup.gameObject);
         }
     }
 
@@ -109,8 +168,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CheckPlacement()
+    private void CheckMouseState()
     {
+        //Stuff to clear
+        _targetPowerSource = null;
+        //
+
         _gridPosition = _tileMap.WorldToCell(_mouseWorldPosition);
         _hoveredTile = _tileMap.GetTile(_gridPosition);
         _cellCenterWorldPosition = _tileMap.GetCellCenterWorld(_gridPosition);
@@ -127,9 +190,21 @@ public class PlayerController : MonoBehaviour
             {
                 _placementPreview.SetActive(true);
                 _placementPreview.transform.position = _cellCenterWorldPosition;
+
+                _mouseState = PlayerMouseState.placement;
             }
             else
             {
+                if (_hit.collider.gameObject.CompareTag("PowerSource"))
+                {
+                    _targetPowerSource = _hit.collider.gameObject.GetComponent<PowerSource>();
+                    _mouseState = PlayerMouseState.powersource;
+                }
+                else
+                {
+                    _mouseState = PlayerMouseState.none;
+                }
+
                 _placementPreview.SetActive(false);
             }
         }
