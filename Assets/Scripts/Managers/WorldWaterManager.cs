@@ -13,7 +13,7 @@ public class WorldWaterManager : MonoService
 
     private void FixedUpdate()
     {
-        FindWaterConnections();
+        CalculateWaterFlow();
     }
 
     public void AddWaterSource(WaterSource waterSource)
@@ -36,7 +36,7 @@ public class WorldWaterManager : MonoService
         _waterInputs.Add(waterInput);
     }
 
-    private void FindWaterConnections()
+    private void CalculateWaterFlow()
     {
         _waterPipesActive.Clear();
 

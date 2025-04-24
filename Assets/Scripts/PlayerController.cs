@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private Tilemap _tileMap;
 
     private LazyService<WorldWaterManager> _worldWaterManager;
+    private LazyService<UIManager> _uiManager;
 
     [Header("Data")]
     private PlayerMouseState _mouseState = PlayerMouseState.none;
@@ -59,6 +60,8 @@ public class PlayerController : MonoBehaviour
     {
         _currentPipes = _startingPipes;
         _currentParts = _startingParts;
+
+        UpdateUI();
 
         _placementPreview = transform.Find("PlacePreview").gameObject;
         _placementPreview.SetActive(false);
@@ -100,6 +103,7 @@ public class PlayerController : MonoBehaviour
                         if (_targetPowerSource.AddParts())
                         {
                             _currentParts--;
+                            UpdateUI();
                         }
                     }
                     else if (Input.GetButtonDown("Fire2") && _targetPowerSource != null)
@@ -107,6 +111,7 @@ public class PlayerController : MonoBehaviour
                         if (_targetPowerSource.RemoveParts())
                         {
                             _currentParts++;
+                            UpdateUI();
                         }
                     }
                     break;
@@ -130,6 +135,7 @@ public class PlayerController : MonoBehaviour
             WaterPipePickup pickup = collision.GetComponent<WaterPipePickup>();
 
             _currentPipes += pickup.pipesToAdd;
+            UpdateUI();
 
             Destroy(pickup.gameObject);
         }
@@ -138,6 +144,7 @@ public class PlayerController : MonoBehaviour
             PartsPickup pickup = collision.GetComponent<PartsPickup>();
 
             _currentParts += pickup.partsToAdd;
+            UpdateUI();
 
             Destroy(pickup.gameObject);
         }
@@ -216,6 +223,7 @@ public class PlayerController : MonoBehaviour
         {
             GameObject newPipe = Instantiate(_waterPipePrefab, _tileMap.GetCellCenterLocal(_gridPosition), Quaternion.identity, _worldWaterManager.Value.transform);
             _currentPipes--;
+            UpdateUI();
             newPipe.name = "Pipe" + _currentPipes.ToString();
         }
     }
@@ -230,7 +238,14 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(_hit.collider.gameObject);
                 _currentPipes++;
+                UpdateUI();
             }
         }
+    }
+
+    private void UpdateUI()
+    {
+        _uiManager.Value.SetWaterPipeCounter(_currentPipes);
+        _uiManager.Value.SetPartsCounter(_currentParts);
     }
 }

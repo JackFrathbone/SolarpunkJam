@@ -120,7 +120,11 @@ public class WaterInput : MonoBehaviour
 
         foreach (WaterSource waterSource in _connectedWaterSources)
         {
-            _currentWaterAmount += waterSource.GetWaterSourceAmount();
+            //Make sure the water source is powered
+            if (waterSource.GetIsPowered())
+            {
+                _currentWaterAmount += waterSource.GetWaterSourceAmount();
+            }
         }
 
         if (_currentWaterAmount == _requiredWaterAmount)

@@ -47,6 +47,7 @@ public class WaterSource : MonoBehaviour
         }
 
         CheckForConnections();
+        CheckPowered();
     }
 
     private void CheckForConnections()
