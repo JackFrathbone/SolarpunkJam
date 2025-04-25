@@ -3,5 +3,16 @@ using UnityEngine;
 
 public class GameManager : MonoService
 {
+    [Header("References")]
+    public PlayerController playerController;
 
+    public void PauseGame()
+    {
+        playerController.SetFreezeInput(true);
+    }
+
+    public void UnPauseGame()
+    {
+        playerController.SetFreezeInput(false);
+    }
 }

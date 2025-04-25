@@ -8,14 +8,16 @@ public class PlayerController : MonoBehaviour
     {
         none,
         placement,
-        powersource
+        powersource,
+        character
     }
-
 
     [Header("Settings")]
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private int _startingPipes = 25;
     [SerializeField] private int _startingParts = 5;
+
+    [SerializeField] private Sprite _dialoguePotraitSprite;
 
     [Header("Inventory")]
     private int _currentPipes;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private Tilemap _tileMap;
 
+    private LazyService<GameManager> _gameManager;
     private LazyService<WorldWaterManager> _worldWaterManager;
     private LazyService<UIManager> _uiManager;
 
@@ -56,8 +59,12 @@ public class PlayerController : MonoBehaviour
     //For Powersource
     private PowerSource _targetPowerSource;
 
+    private Character _targetCharacterController;
+
     private void Start()
     {
+        _gameManager.Value.playerController = this;
+
         _currentPipes = _startingPipes;
         _currentParts = _startingParts;
 
@@ -113,6 +120,12 @@ public class PlayerController : MonoBehaviour
                             _currentParts++;
                             UpdateUI();
                         }
+                    }
+                    break;
+                case PlayerMouseState.character:
+                    if (Input.GetButtonDown("Fire1") && _targetCharacterController != null)
+                    {
+                        _uiManager.Value.ActivateDialogue(_targetCharacterController.GetCurrentDialogue(), _targetCharacterController.GetCharacterName(), _targetCharacterController.GetCharacterSprite(), _dialoguePotraitSprite);
                     }
                     break;
             }
@@ -207,6 +220,19 @@ public class PlayerController : MonoBehaviour
                     _targetPowerSource = _hit.collider.gameObject.GetComponent<PowerSource>();
                     _mouseState = PlayerMouseState.powersource;
                 }
+                else if (_hit.collider.gameObject.CompareTag("Character"))
+                {
+                    if (_hit.collider.isTrigger)
+                    {
+                        _targetCharacterController = _hit.collider.gameObject.GetComponent<Character>();
+                    }
+                    else
+                    {
+                        _targetCharacterController = _hit.collider.gameObject.GetComponentInParent<Character>();
+                    }
+
+                    _mouseState = PlayerMouseState.character;
+                }
                 else
                 {
                     _mouseState = PlayerMouseState.none;
@@ -247,5 +273,10 @@ public class PlayerController : MonoBehaviour
     {
         _uiManager.Value.SetWaterPipeCounter(_currentPipes);
         _uiManager.Value.SetPartsCounter(_currentParts);
+    }
+
+    public void SetFreezeInput(bool freezeInput)
+    {
+        _freezeInput = freezeInput;
     }
 }

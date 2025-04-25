@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class WaterPipe : MonoBehaviour
 {
-    [Header("References")]
-    private SpriteRenderer _renderer;
+    [Header("Settings")]
+    [SerializeField] LayerMask _layerMask;
 
     [Header("References")]
+    private SpriteRenderer _renderer;
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -50,16 +51,16 @@ public class WaterPipe : MonoBehaviour
 
         gameObject.layer = 2;
 
-        _hit = Physics2D.Raycast(transform.position, _isometricUpRight, 0.5f);
+        _hit = Physics2D.Raycast(transform.position, _isometricUpRight, 0.5f, _layerMask);
         CheckHit();
 
-        _hit = Physics2D.Raycast(transform.position, _isometricDownLeft, 0.5f);
+        _hit = Physics2D.Raycast(transform.position, _isometricDownLeft, 0.5f, _layerMask);
         CheckHit();
 
-        _hit = Physics2D.Raycast(transform.position, _isometricUpLeft, 0.5f);
+        _hit = Physics2D.Raycast(transform.position, _isometricUpLeft, 0.5f, _layerMask);
         CheckHit();
 
-        _hit = Physics2D.Raycast(transform.position, _isometricDownRight, 0.5f);
+        _hit = Physics2D.Raycast(transform.position, _isometricDownRight, 0.5f, _layerMask);
         CheckHit();
 
         gameObject.layer = 0;

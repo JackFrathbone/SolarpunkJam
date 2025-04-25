@@ -10,11 +10,12 @@ TagManager:
   - WaterPipePickup
   - PartsPickup
   - PowerSource
+  - Character
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactables
   - Water
   - UI
   - 
