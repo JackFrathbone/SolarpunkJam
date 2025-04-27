@@ -53,7 +53,20 @@ public class UIManager : MonoService
             return true;
         }
 
+
+
         Dialogue dialogue = _currentDialogueObject.dialogues[_currentDialogueIndex];
+
+        if (dialogue.isPlayer)
+        {
+            _characterPotrait.transform.localScale = Vector3.one;
+            _playerPotrait.transform.localScale += Vector3.one * 0.5f;
+        }
+        else
+        {
+            _characterPotrait.transform.localScale += Vector3.one * 0.5f;
+            _playerPotrait.transform.localScale = Vector3.one;
+        }
 
         _dialogueText.text = dialogue.dialogueText;
 
@@ -72,6 +85,9 @@ public class UIManager : MonoService
 
         _currentDialogueObject = dialogueObject;
         _currentDialogueIndex = 0;
+
+        _characterPotrait.transform.localScale = Vector3.one;
+        _playerPotrait.transform.localScale = Vector3.one;
 
         _characterPotrait.sprite = characterSprite;
         _playerPotrait.sprite = playerSprite;
