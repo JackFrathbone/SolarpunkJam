@@ -20,7 +20,7 @@ public class Character : MonoBehaviour
 
         if (_characterSprite != null)
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _spriteRenderer.sprite = _characterSprite;
         }
     }
@@ -29,7 +29,7 @@ public class Character : MonoBehaviour
     {
         _currentDialogue = _defaultDialogue;
 
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         if (_characterSprite != null)
         {

@@ -49,6 +49,18 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 1
+  _pipeSprites:
+  - {fileID: 21300000, guid: 08a7c289b2c48b544abb3a8ebec25b21, type: 3}
+  - {fileID: 21300000, guid: 613dc27acf7af244bbcde1547ab2942c, type: 3}
+  - {fileID: 21300000, guid: 7d6bf5bb96ba812458273b332889dfbc, type: 3}
+  - {fileID: 21300000, guid: 8aac48ffba03a21459e536ce02a3efab, type: 3}
+  - {fileID: 21300000, guid: 2938c8e74a2b9e94181a1b5c3f60bb3d, type: 3}
+  - {fileID: 21300000, guid: 24bef1c58876888439cfd2156277d6e5, type: 3}
+  - {fileID: 21300000, guid: 850d5fa0ab28fab44895e2bb31dbb484, type: 3}
+  - {fileID: 21300000, guid: eeb0bd7b3ba6f4449bd8b517d06d6ca0, type: 3}
+  - {fileID: 21300000, guid: 430347477f3263443be76942cdea483b, type: 3}
+  - {fileID: 21300000, guid: 7d4e64ab958af29459491bf001abc004, type: 3}
+  - {fileID: 21300000, guid: 85ab3ca74d0892a47867fd225b118bcd, type: 3}
   isEndpoint: 0
   hasWater: 0
 --- !u!212 &5132447085748681484
@@ -91,9 +103,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 85ab3ca74d0892a47867fd225b118bcd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

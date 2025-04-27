@@ -8,7 +8,9 @@ public class WaterPipe : MonoBehaviour
     [SerializeField] LayerMask _layerMask;
 
     [Header("References")]
+    [SerializeField] List<Sprite> _pipeSprites = new();
     private SpriteRenderer _renderer;
+
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -26,11 +28,18 @@ public class WaterPipe : MonoBehaviour
     private readonly Vector2 _isometricUpLeft = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 150f), Mathf.Sin(Mathf.Deg2Rad * 150f)).normalized;
     private readonly Vector2 _isometricDownRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 330f), Mathf.Sin(Mathf.Deg2Rad * 330f)).normalized;
 
+    //Pipe direction bools
+    private bool _upLeft;
+    private bool _upright;
+    private bool _downleft;
+    private bool _downRight;
+
     private void Start()
     {
         _worldWaterManager.Value.AddWaterPipe(this);
 
         _renderer = GetComponent<SpriteRenderer>();
+        _renderer.sprite = _pipeSprites[10];
     }
 
     private void FixedUpdate()
@@ -52,34 +61,72 @@ public class WaterPipe : MonoBehaviour
         gameObject.layer = 2;
 
         _hit = Physics2D.Raycast(transform.position, _isometricUpRight, 0.5f, _layerMask);
-        CheckHit();
+        CheckHit(0);
 
         _hit = Physics2D.Raycast(transform.position, _isometricDownLeft, 0.5f, _layerMask);
-        CheckHit();
+        CheckHit(1);
 
         _hit = Physics2D.Raycast(transform.position, _isometricUpLeft, 0.5f, _layerMask);
-        CheckHit();
+        CheckHit(2);
 
         _hit = Physics2D.Raycast(transform.position, _isometricDownRight, 0.5f, _layerMask);
-        CheckHit();
+        CheckHit(3);
 
         gameObject.layer = 0;
     }
 
-    private void CheckHit()
+    private void CheckHit(int direction)
     {
         if (_hit.collider == null)
         {
+            switch (direction)
+            {
+                case 0:
+                    _upright = false;
+                    break;
+                case 1:
+                    _downleft = false;
+                    break;
+                case 2:
+                    _upLeft = false;
+                    break;
+                case 3:
+                    _downRight = false;
+                    break;
+            }
+
             return;
         }
 
+        bool connected = false;
         if (_hit.collider.CompareTag("Pipe"))
         {
             _connectedPipes.Add(_hit.collider.GetComponent<WaterPipe>());
+            connected = true;
         }
         else if (_hit.collider.CompareTag("WaterInput"))
         {
             _connectedWaterInputs.Add(_hit.collider.GetComponent<WaterInput>());
+            connected = true;
+        }
+
+        if (connected)
+        {
+            switch (direction)
+            {
+                case 0:
+                    _upright = true;
+                    break;
+                case 1:
+                    _downleft = true;
+                    break;
+                case 2:
+                    _upLeft = true;
+                    break;
+                case 3:
+                    _downRight = true;
+                    break;
+            }
         }
 
         //Set to an endpoint if it has any attached inputs
@@ -91,13 +138,100 @@ public class WaterPipe : MonoBehaviour
 
     private void UpdateVisuals()
     {
+        //No connections
+        if (!_upLeft && !_upright && !_downleft && !_downRight)
+        {
+            _renderer.sprite = _pipeSprites[10];
+        }
+        //Up left and up right
+        else if (_upLeft && _upright && !_downleft && !_downRight)
+        {
+            _renderer.sprite = _pipeSprites[2];
+        }
+        //Down left and down right
+        else if (!_upLeft && !_upright && _downleft && _downRight)
+        {
+            _renderer.sprite = _pipeSprites[0];
+        }
+        //Up left and down left
+        else if (_upLeft && !_upright && _downleft && !_downRight)
+        {
+            _renderer.sprite = _pipeSprites[1];
+        }
+        //Up right and down right
+        else if (!_upLeft && _upright && !_downleft && _downRight)
+        {
+            _renderer.sprite = _pipeSprites[3];
+        }
+        //Up left and down right
+        else if (_upLeft && !_upright && !_downleft && _downRight)
+        {
+            _renderer.sprite = _pipeSprites[10];
+        }
+        //Up right and down left
+        else if (!_upLeft && _upright && _downleft && !_downRight)
+        {
+            _renderer.sprite = _pipeSprites[9];
+        }
+        //Up left, down left and down right
+        else if (_upLeft && !_upright && _downleft && _downRight)
+        {
+            _renderer.sprite = _pipeSprites[4];
+        }
+        //down left, up right and down right
+        else if (!_upLeft && _upright && _downleft && _downRight)
+        {
+            _renderer.sprite = _pipeSprites[5];
+        }
+        //Down left, down right and up right
+        else if (!_upLeft && _upright && _downleft && _downRight)
+        {
+            _renderer.sprite = _pipeSprites[6];
+        }
+        //Down left, up left and up right
+        else if (_upLeft && _upright && _downleft && !_downRight)
+        {
+            _renderer.sprite = _pipeSprites[6];
+        }
+        //Up left, down right and up right
+        else if (_upLeft && _upright && !_downleft && _downRight)
+        {
+            _renderer.sprite = _pipeSprites[7];
+        }
+        //Just down left
+        else if (!_upLeft && !_upright && _downleft && !_downRight)
+        {
+            _renderer.sprite = _pipeSprites[9];
+        }
+        //Just up right
+        else if (!_upLeft && _upright && !_downleft && !_downRight)
+        {
+            _renderer.sprite = _pipeSprites[9];
+        }
+        //Just down right
+        else if (!_upLeft && !_upright && !_downleft && _downRight)
+        {
+            _renderer.sprite = _pipeSprites[10];
+        }
+        //Just up left
+        else if (_upLeft && !_upright && !_downleft && !_downRight)
+        {
+            _renderer.sprite = _pipeSprites[10];
+        }
+        //All connections
+        else if (_upLeft && _upright && _downleft && _downRight)
+        {
+            _renderer.sprite = _pipeSprites[8];
+        }
+
+
         if (hasWater)
         {
             _renderer.color = Color.blue;
         }
         else
         {
-            _renderer.color = Color.black;
+            _renderer.color = Color.white;
         }
     }
 

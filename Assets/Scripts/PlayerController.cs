@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         _placementPreview.SetActive(false);
 
         _rigidbody = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         _tileMap = FindObjectOfType<Tilemap>();
     }
