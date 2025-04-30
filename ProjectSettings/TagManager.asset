@@ -13,6 +13,7 @@ TagManager:
   - Character
   - WaterSourcePump
   - Cable
+  - JunctionBox
   layers:
   - Default
   - TransparentFX
