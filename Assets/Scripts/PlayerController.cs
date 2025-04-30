@@ -15,17 +15,21 @@ public class PlayerController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private int _startingPipes = 25;
+    [SerializeField] private int _startingCables = 10;
     [SerializeField] private int _startingParts = 5;
 
     [SerializeField] private Sprite _dialoguePotraitSprite;
 
     [Header("Inventory")]
+    private int _currentCables;
     private int _currentPipes;
     private int _currentParts;
 
 
     [Header("References")]
     [SerializeField] private GameObject _waterPipePrefab;
+    [SerializeField] private GameObject _cablePrefab;
+
     private GameObject _placementPreview;
 
     private Rigidbody2D _rigidbody;
@@ -38,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private LazyService<UIManager> _uiManager;
 
     [Header("Data")]
+    private bool _placingCables;
+
     private PlayerMouseState _mouseState = PlayerMouseState.none;
 
     private bool _facingLeft = false;
@@ -66,6 +72,7 @@ public class PlayerController : MonoBehaviour
         _gameManager.Value.playerController = this;
 
         _currentPipes = _startingPipes;
+        _currentCables = _startingCables;
         _currentParts = _startingParts;
 
         UpdateUI();
@@ -83,6 +90,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!_freezeInput)
         {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                _placingCables = !_placingCables;
+            }
+
             _horizontalInput = Input.GetAxis("Horizontal");
             _verticalInput = Input.GetAxis("Vertical");
 
@@ -95,13 +107,27 @@ public class PlayerController : MonoBehaviour
                 case PlayerMouseState.none:
                     if (Input.GetButton("Fire2"))
                     {
-                        RemovePipe();
+                        if (!_placingCables)
+                        {
+                            RemovePipe();
+                        }
+                        else
+                        {
+                            RemoveCable();
+                        }
                     }
                     break;
                 case PlayerMouseState.placement:
                     if (Input.GetButton("Fire1") && _placementPreview.activeInHierarchy)
                     {
-                        PlacePipe();
+                        if (!_placingCables)
+                        {
+                            PlacePipe();
+                        }
+                        else
+                        {
+                            PlaceCable();
+                        }
                     }
                     break;
                 case PlayerMouseState.powersource:
@@ -264,6 +290,32 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(_hit.collider.gameObject);
                 _currentPipes++;
+                UpdateUI();
+            }
+        }
+    }
+
+    private void PlaceCable()
+    {
+        if (_currentCables > 0)
+        {
+            GameObject newCable = Instantiate(_cablePrefab, _tileMap.GetCellCenterLocal(_gridPosition), Quaternion.identity, _worldWaterManager.Value.transform);
+            _currentCables--;
+            UpdateUI();
+            newCable.name = "Cable" + _currentCables.ToString();
+        }
+    }
+
+    private void RemoveCable()
+    {
+        _hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+        if (_hit.collider != null)
+        {
+            if (_hit.collider.CompareTag("Cable"))
+            {
+                Destroy(_hit.collider.gameObject);
+                _currentCables++;
                 UpdateUI();
             }
         }

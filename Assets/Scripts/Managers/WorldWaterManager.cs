@@ -11,14 +11,31 @@ public class WorldWaterManager : MonoService
 
     private List<WaterPipe> _waterPipesActive = new();
 
+    private List<PowerSource> _powerSources = new();
+    private List<WaterSourcePump> _waterSourcesPumps = new();
+    private List<Cable> _cables = new();
+
+    private List<Cable> _cablesActive = new();
+
     private void FixedUpdate()
     {
         CalculateWaterFlow();
+        CalculateElectricityConnections();
     }
 
     public void AddWaterSource(WaterSource waterSource)
     {
         _waterSources.Add(waterSource);
+    }
+
+    public void AddPowerSource(PowerSource powerSource)
+    {
+        _powerSources.Add(powerSource);
+    }
+
+    public void AddWaterPump(WaterSourcePump waterSourcePump)
+    {
+        _waterSourcesPumps.Add(waterSourcePump);
     }
 
     public void AddWaterPipe(WaterPipe waterPipe)
@@ -29,6 +46,16 @@ public class WorldWaterManager : MonoService
     public void RemoveWaterPipe(WaterPipe waterPipe)
     {
         _waterPipes.Remove(waterPipe);
+    }
+
+    public void AddCable(Cable cable)
+    {
+        _cables.Add(cable);
+    }
+
+    public void RemoveCable(Cable cable)
+    {
+        _cables.Remove(cable);
     }
 
     public void AddWaterInput(WaterInput waterInput)
@@ -47,7 +74,7 @@ public class WorldWaterManager : MonoService
 
         foreach (WaterSource waterSource in _waterSources)
         {
-            if (waterSource.GetConnectedPipes().Count == 0)
+            if (waterSource.GetConnectedPipes().Count == 0 || !waterSource.GetIsPowered())
             {
                 continue;
             }
@@ -101,5 +128,58 @@ public class WorldWaterManager : MonoService
             }
         }
 
+    }
+
+    private void CalculateElectricityConnections()
+    {
+        _cablesActive.Clear();
+
+        foreach (WaterSourcePump pump in _waterSourcesPumps)
+        {
+            pump.ClearConnectedPowerSources();
+        }
+
+        foreach (PowerSource powerSource in _powerSources)
+        {
+            if (powerSource.GetConnectedCables().Count == 0)
+            {
+                continue;
+            }
+
+            Queue<Cable> queue = new();
+            HashSet<Cable> visited = new();
+
+            foreach (Cable cable in powerSource.GetConnectedCables())
+            {
+                queue.Enqueue(cable);
+                visited.Add(cable);
+                _cablesActive.Add(cable);
+            }
+
+            while (queue.Count > 0)
+            {
+                Cable currentCable = queue.Dequeue();
+
+                _cablesActive.Add(currentCable);
+
+                if (currentCable.isEndpoint == true)
+                {
+                    Debug.Log("Found attached pump!");
+                    foreach (WaterSourcePump pump in currentCable.GetAttachedPumps())
+                    {
+                        pump.AddConnectedPowerSource(powerSource);
+                    }
+                }
+
+                foreach (Cable neighbor in currentCable.GetattachedCables())
+                {
+                    if (neighbor != null && !visited.Contains(neighbor))
+                    {
+                        visited.Add(neighbor);
+                        queue.Enqueue(neighbor);
+                    }
+                }
+            }
+        }
     }
 }

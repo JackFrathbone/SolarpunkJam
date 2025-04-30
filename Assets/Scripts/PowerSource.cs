@@ -1,3 +1,5 @@
+using RenderHeads.Services;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -5,15 +7,26 @@ public class PowerSource : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private bool _startActive;
-    [SerializeField] private int _totalParts = 2;
+    [SerializeField] private int _totalParts = 6;
 
     [Header("References")]
+    private List<Cable> _connectedCables = new();
+
     private TextMeshPro _textMeshPro;
+
+    private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
     private bool _isActive;
-
     private int _currentParts;
+
+    private RaycastHit2D _hit;
+
+    //For keeping track of directions to raycast
+    private readonly Vector2 _isometricUpRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 30f), Mathf.Sin(Mathf.Deg2Rad * 30f)).normalized;
+    private readonly Vector2 _isometricDownLeft = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 210f), Mathf.Sin(Mathf.Deg2Rad * 210f)).normalized;
+    private readonly Vector2 _isometricUpLeft = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 150f), Mathf.Sin(Mathf.Deg2Rad * 150f)).normalized;
+    private readonly Vector2 _isometricDownRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 330f), Mathf.Sin(Mathf.Deg2Rad * 330f)).normalized;
 
     private void Awake()
     {
@@ -22,6 +35,8 @@ public class PowerSource : MonoBehaviour
 
     private void Start()
     {
+        _worldWaterManager.Value.AddPowerSource(this);
+
         if (_startActive)
         {
             _isActive = _startActive;
@@ -29,6 +44,55 @@ public class PowerSource : MonoBehaviour
         }
 
         CheckActive();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!GetIsActive())
+        {
+            return;
+        }
+
+        CheckForConnections();
+    }
+
+    private void CheckForConnections()
+    {
+        _connectedCables.Clear();
+
+        gameObject.layer = 2;
+
+        _hit = Physics2D.Raycast(transform.position, _isometricUpRight, 0.5f);
+        CheckHit();
+
+        _hit = Physics2D.Raycast(transform.position, _isometricDownLeft, 0.5f);
+        CheckHit();
+
+        _hit = Physics2D.Raycast(transform.position, _isometricUpLeft, 0.5f);
+        CheckHit();
+
+        _hit = Physics2D.Raycast(transform.position, _isometricDownRight, 0.5f);
+        CheckHit();
+
+        gameObject.layer = 0;
+    }
+
+    private void CheckHit()
+    {
+        if (_hit.collider == null)
+        {
+            return;
+        }
+
+        if (_hit.collider.CompareTag("Cable"))
+        {
+            _connectedCables.Add(_hit.collider.GetComponent<Cable>());
+        }
+    }
+
+    public List<Cable> GetConnectedCables()
+    {
+        return _connectedCables;
     }
 
     public bool GetIsActive()

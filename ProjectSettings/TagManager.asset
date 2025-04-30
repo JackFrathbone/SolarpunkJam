@@ -11,6 +11,8 @@ TagManager:
   - PartsPickup
   - PowerSource
   - Character
+  - WaterSourcePump
+  - Cable
   layers:
   - Default
   - TransparentFX

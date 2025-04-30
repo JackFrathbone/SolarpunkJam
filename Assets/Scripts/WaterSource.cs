@@ -1,23 +1,23 @@
 using RenderHeads.Services;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaterSource : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField, Tooltip("How much water this water source has")] private int _waterSourceAmount = 6;
-    [SerializeField] private List<PowerSource> _connectedPowerSources = new();
+    [SerializeField] private List<WaterSourcePump> _connectedPumps = new();
 
     [Header("References")]
-    [SerializeField] private TextMeshPro _textMeshPro;
+    private List<WaterPipe> _connectedPipes = new();
+    private TextMeshPro _textMeshPro;
+
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
     private bool _isPowered;
-
-    private List<WaterPipe> _connectedPipes = new();
-
     private RaycastHit2D _hit;
 
     //For keeping track of directions to raycast
@@ -36,18 +36,19 @@ public class WaterSource : MonoBehaviour
     {
         _worldWaterManager.Value.AddWaterSource(this);
 
-        InvokeRepeating("CheckPowered", Random.Range(0f, 1f), 1f);
+        //InvokeRepeating("CheckPowered", Random.Range(0f, 1f), 1f);
     }
 
     private void FixedUpdate()
     {
+        CheckPowered();
+
         if (!_isPowered)
         {
             return;
         }
 
         CheckForConnections();
-        CheckPowered();
     }
 
     private void CheckForConnections()
@@ -101,20 +102,32 @@ public class WaterSource : MonoBehaviour
 
     private void CheckPowered()
     {
-        if (_connectedPowerSources.Count == 0)
+        if (_connectedPumps.Count == 0)
         {
             _isPowered = true;
             return;
         }
 
-        //Go through all connected power sources, if one isnt powered up then turn off this water source
+        //Go through all connected pumps, check their connected power sources, if one isnt powered up then turn off this water source
         bool poweredUp = true;
-        foreach (PowerSource powerSource in _connectedPowerSources)
+        bool nullCheck = false;
+
+        foreach (WaterSourcePump pump in _connectedPumps)
         {
-            if (!powerSource.GetIsActive())
+            foreach (PowerSource powerSource in pump.GetConnectedPowerSources())
             {
-                poweredUp = false;
+                nullCheck = true;
+
+                if (!powerSource.GetIsActive())
+                {
+                    poweredUp = false;
+                }
             }
+        }
+
+        if (!nullCheck)
+        {
+            poweredUp = false;
         }
 
         _isPowered = poweredUp;
@@ -131,18 +144,18 @@ public class WaterSource : MonoBehaviour
         Gizmos.DrawRay(transform.position, _isometricDownRight);
 
         //Draws lines to each connected powersource
-        if (_connectedPowerSources != null && _connectedPowerSources.Count > 0)
+        if (_connectedPumps != null && _connectedPumps.Count > 0)
         {
             Gizmos.color = Color.red;
 
             // Iterate through each GameObject in the list.
-            foreach (PowerSource powerSource in _connectedPowerSources)
+            foreach (WaterSourcePump pump in _connectedPumps)
             {
                 // Make sure the target GameObject is not null.
-                if (powerSource.gameObject != null)
+                if (pump.gameObject != null)
                 {
                     // Draw the line from the current GameObject's position to the target's position.
-                    Gizmos.DrawLine(transform.position, powerSource.gameObject.transform.position);
+                    Gizmos.DrawLine(transform.position, pump.gameObject.transform.position);
                 }
             }
         }

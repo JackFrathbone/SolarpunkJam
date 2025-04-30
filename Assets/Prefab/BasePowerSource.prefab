@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startActive: 0
-  _totalParts: 0
+  _totalParts: 6
 --- !u!212 &2218763678821966303
 SpriteRenderer:
   m_ObjectHideFlags: 0
