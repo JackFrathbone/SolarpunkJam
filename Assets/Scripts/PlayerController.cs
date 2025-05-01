@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
         none,
         placement,
         powersource,
-        character,
-        junctionPlacement
+        character
     }
 
     [Header("Settings")]
@@ -155,9 +154,6 @@ public class PlayerController : MonoBehaviour
                         _uiManager.Value.ActivateDialogue(_targetCharacterController.GetCurrentDialogue(), _targetCharacterController.GetCharacterName(), _targetCharacterController.GetCharacterSprite(), _dialoguePotraitSprite);
                     }
                     break;
-                case PlayerMouseState.junctionPlacement:
-
-                    break;
             }
         }
     }
@@ -264,13 +260,6 @@ public class PlayerController : MonoBehaviour
                     }
 
                     _mouseState = PlayerMouseState.character;
-                }
-                else if (_hit.collider.gameObject.CompareTag("JunctionBox"))
-                {
-                    _placementPreview.SetActive(true);
-                    _placementPreview.transform.position = _cellCenterWorldPosition;
-
-                    _mouseState = PlayerMouseState.junctionPlacement;
                 }
                 else
                 {
