@@ -177,6 +177,11 @@ public class WaterInput : MonoBehaviour
         _connectedWaterSources.Clear();
     }
 
+    public bool GetHasWater()
+    {
+        return _hasWater;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawRay(transform.position, _isometricUpRight);
