@@ -143,7 +143,7 @@ public class WaterSource : MonoBehaviour
         Gizmos.DrawRay(transform.position, _isometricUpLeft);
         Gizmos.DrawRay(transform.position, _isometricDownRight);
 
-        //Draws lines to each connected powersource
+        //Draws lines to each connected pump
         if (_connectedPumps != null && _connectedPumps.Count > 0)
         {
             Gizmos.color = Color.red;

@@ -4,12 +4,11 @@ using UnityEngine;
 public class Water : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private WaterInput _connectedWaterInput;
-
-    [SerializeField] private List<Sprite> _emptySprites;
-    [SerializeField] private List<Sprite> _fullSprites;
+    [SerializeField] private List<Sprite> _emptySprites = new();
+    [SerializeField] private List<Sprite> _fullSprites= new();
 
     [Header("References")]
+    private WaterInput _connectedWaterInput;
     private SpriteRenderer _renderer;
 
     [Header("Data")]
@@ -39,5 +38,10 @@ public class Water : MonoBehaviour
                 _renderer.sprite = _emptySprite;
             }
         }
+    }
+
+    public void AddWaterInput(WaterInput waterInput)
+    {
+        _connectedWaterInput = waterInput;
     }
 }
