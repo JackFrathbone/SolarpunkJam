@@ -235,6 +235,11 @@ public class Cable : MonoBehaviour
         }
     }
 
+    public void AddCable(Cable cable)
+    {
+        _connectedCables.Add(cable);
+    }
+
     public List<Cable> GetattachedCables()
     {
         return _connectedCables;

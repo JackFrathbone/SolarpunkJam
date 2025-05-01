@@ -109,6 +109,14 @@ public class WaterPipe : MonoBehaviour
             _connectedWaterInputs.Add(_hit.collider.GetComponent<WaterInput>());
             connected = true;
         }
+        else if (_hit.collider.CompareTag("WaterSource"))
+        {
+            connected = true;
+        }
+        else if (_hit.collider.CompareTag("JunctionBox"))
+        {
+            connected = true;
+        }
 
         if (connected)
         {
@@ -233,6 +241,11 @@ public class WaterPipe : MonoBehaviour
         {
             _renderer.color = Color.white;
         }
+    }
+
+    public void AddPipe(WaterPipe waterPipe)
+    {
+        _connectedPipes.Add(waterPipe);
     }
 
     public List<WaterPipe> GetattachedPipes()
