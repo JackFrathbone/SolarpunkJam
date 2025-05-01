@@ -211,11 +211,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_mouseWorldPosition.x > transform.position.x)
         {
-            _spriteRenderer.flipX = false;
+            _spriteRenderer.flipX = true;
         }
         else if (_mouseWorldPosition.x < transform.position.x)
         {
-            _spriteRenderer.flipX = true;
+            _spriteRenderer.flipX = false;
         }
         else
         {

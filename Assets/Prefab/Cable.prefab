@@ -49,7 +49,18 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 1
-  _pipeSprites: []
+  _pipeSprites:
+  - {fileID: 21300000, guid: c5d6326e43f8f2e48b90b1d70f53b5bc, type: 3}
+  - {fileID: 21300000, guid: c3367b2f787553641b02151bf1964e0a, type: 3}
+  - {fileID: 21300000, guid: 397e2baf82565e64cbcd5a085d544309, type: 3}
+  - {fileID: 21300000, guid: baf1858f5e35ae84ea9da801c620f2ca, type: 3}
+  - {fileID: 21300000, guid: 200efcfdd7f5ab3419af181e8f3bf48b, type: 3}
+  - {fileID: 21300000, guid: 92299e744b351b840ba6ff8963701580, type: 3}
+  - {fileID: 21300000, guid: 0561906d18ac0b74dbfa3804968b9f69, type: 3}
+  - {fileID: 21300000, guid: 246a8120af5669141af12cea5cd8668e, type: 3}
+  - {fileID: 21300000, guid: 906e1dc9c8de83841ba5b8d784de2373, type: 3}
+  - {fileID: 21300000, guid: 71eaa098e78c655408663e09386a524b, type: 3}
+  - {fileID: 21300000, guid: d0876d4b4e1ab16438cdf27efb8f79d4, type: 3}
   isEndpoint: 0
   hasWater: 0
 --- !u!212 &3828754932051273075
@@ -93,8 +104,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d0876d4b4e1ab16438cdf27efb8f79d4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -140,7 +151,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
+    oldSize: {x: 2.56, y: 1.28}
     newSize: {x: 1, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

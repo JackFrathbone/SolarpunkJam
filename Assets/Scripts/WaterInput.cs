@@ -213,5 +213,22 @@ public class WaterInput : MonoBehaviour
                 }
             }
         }
+
+        //Draws lines to each connected water visual
+        if (_connectedBlockers != null && _connectedBlockers.Count > 0)
+        {
+            Gizmos.color = Color.green;
+
+            // Iterate through each GameObject in the list.
+            foreach (Blocker blocker in _connectedBlockers)
+            {
+                // Make sure the target GameObject is not null.
+                if (blocker.gameObject != null)
+                {
+                    // Draw the line from the current GameObject's position to the target's position.
+                    Gizmos.DrawLine(transform.position, blocker.gameObject.transform.position);
+                }
+            }
+        }
     }
 }

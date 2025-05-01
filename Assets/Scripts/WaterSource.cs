@@ -98,10 +98,12 @@ public class WaterSource : MonoBehaviour
 
         if (_parentWaterInput.GetHasWater())
         {
+            _textMeshPro.gameObject.SetActive(true);
             return false;
         }
         else
         {
+            _textMeshPro.gameObject.SetActive(false);
             return true;
         }
     }

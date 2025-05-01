@@ -39,13 +39,13 @@ public class Cable : MonoBehaviour
         _worldWaterManager.Value.AddCable(this);
 
         _renderer = GetComponent<SpriteRenderer>();
-        //_renderer.sprite = _pipeSprites[10];
+        _renderer.sprite = _pipeSprites[10];
     }
 
     private void FixedUpdate()
     {
         CheckForConnections();
-        //UpdateVisuals();
+        UpdateVisuals();
     }
 
     private void OnDestroy()
