@@ -187,6 +187,15 @@ public class PlayerController : MonoBehaviour
 
             Destroy(pickup.gameObject);
         }
+        else if (collision.CompareTag("CablePickup"))
+        {
+            CablePickup pickup = collision.GetComponent<CablePickup>();
+
+            _currentCables += pickup.cableToAdd;
+            UpdateUI();
+
+            Destroy(pickup.gameObject);
+        }
     }
 
     private void CheckMovement()
@@ -325,6 +334,7 @@ public class PlayerController : MonoBehaviour
     {
         _uiManager.Value.SetWaterPipeCounter(_currentPipes);
         _uiManager.Value.SetPartsCounter(_currentParts);
+        _uiManager.Value.SetCableCounter(_currentCables);
     }
 
     public void SetFreezeInput(bool freezeInput)

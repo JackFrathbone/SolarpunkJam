@@ -1,12 +1,13 @@
 using RenderHeads.Services;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaterSource : MonoBehaviour
 {
     [Header("Settings")]
+    //If this is attached to a water input, will only active when the input is active
+    [SerializeField] private WaterInput _parentWaterInput;
     [SerializeField, Tooltip("How much water this water source has")] private int _waterSourceAmount = 6;
     [SerializeField] private List<WaterSourcePump> _connectedPumps = new();
 
@@ -35,12 +36,15 @@ public class WaterSource : MonoBehaviour
     private void Start()
     {
         _worldWaterManager.Value.AddWaterSource(this);
-
-        //InvokeRepeating("CheckPowered", Random.Range(0f, 1f), 1f);
     }
 
     private void FixedUpdate()
     {
+        if (CheckParentWaterInput())
+        {
+            return;
+        }
+
         CheckPowered();
 
         if (!_isPowered)
@@ -82,6 +86,23 @@ public class WaterSource : MonoBehaviour
         if (_hit.collider.CompareTag("Pipe"))
         {
             _connectedPipes.Add(_hit.collider.GetComponent<WaterPipe>());
+        }
+    }
+
+    public bool CheckParentWaterInput()
+    {
+        if (_parentWaterInput == null)
+        {
+            return false;
+        }
+
+        if (_parentWaterInput.GetHasWater())
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
@@ -158,6 +179,13 @@ public class WaterSource : MonoBehaviour
                     Gizmos.DrawLine(transform.position, pump.gameObject.transform.position);
                 }
             }
+        }
+
+        //Draw line to parent water input
+        if (_parentWaterInput != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(transform.position, _parentWaterInput.gameObject.transform.position);
         }
     }
 }

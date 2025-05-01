@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad877886015a88429d855ce135c6838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waterSourceAmount: 0
-  _connectedPowerSources: []
-  _textMeshPro: {fileID: 0}
+  _parentWaterInput: {fileID: 0}
+  _waterSourceAmount: 6
+  _connectedPumps: []
 --- !u!212 &3993960860638309454
 SpriteRenderer:
   m_ObjectHideFlags: 0
