@@ -9,7 +9,7 @@ public class WaterInput : MonoBehaviour
     [SerializeField] private int _requiredWaterAmount = 6;
     [SerializeField] private List<Blocker> _connectedBlockers = new();
 
-    [SerializeField] private List<Water> _connectedWaterVisuals = new();
+    [SerializeField] private List<VisualSwitch> _connectedVisuals = new();
 
     [Header("References")]
     private LazyService<WorldWaterManager> _worldWaterManager;
@@ -43,9 +43,9 @@ public class WaterInput : MonoBehaviour
 
         Deactivate();
 
-        foreach(Water water in _connectedWaterVisuals)
+        foreach (VisualSwitch visual in _connectedVisuals)
         {
-            water.AddWaterInput(this);
+            visual.AddWaterInput(this);
         }
     }
 
@@ -198,18 +198,18 @@ public class WaterInput : MonoBehaviour
 
 
         //Draws lines to each connected water visual
-        if (_connectedWaterVisuals != null && _connectedWaterVisuals.Count > 0)
+        if (_connectedVisuals != null && _connectedVisuals.Count > 0)
         {
             Gizmos.color = Color.red;
 
             // Iterate through each GameObject in the list.
-            foreach (Water water in _connectedWaterVisuals)
+            foreach (VisualSwitch visual in _connectedVisuals)
             {
                 // Make sure the target GameObject is not null.
-                if (water.gameObject != null)
+                if (visual.gameObject != null)
                 {
                     // Draw the line from the current GameObject's position to the target's position.
-                    Gizmos.DrawLine(transform.position, water.gameObject.transform.position);
+                    Gizmos.DrawLine(transform.position, visual.gameObject.transform.position);
                 }
             }
         }

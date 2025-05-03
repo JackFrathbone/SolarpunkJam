@@ -60,11 +60,11 @@ public class UIManager : MonoService
         if (dialogue.isPlayer)
         {
             _characterPotrait.transform.localScale = Vector3.one;
-            _playerPotrait.transform.localScale += Vector3.one * 0.5f;
+            _playerPotrait.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         }
         else
         {
-            _characterPotrait.transform.localScale += Vector3.one * 0.5f;
+            _characterPotrait.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             _playerPotrait.transform.localScale = Vector3.one;
         }
 
@@ -89,8 +89,18 @@ public class UIManager : MonoService
         _characterPotrait.transform.localScale = Vector3.one;
         _playerPotrait.transform.localScale = Vector3.one;
 
+
         _characterPotrait.sprite = characterSprite;
         _playerPotrait.sprite = playerSprite;
+
+        if (_characterPotrait.sprite == null)
+        {
+            _characterPotrait.color = Color.clear;
+        }
+        else
+        {
+            _characterPotrait.color = Color.white;
+        }
 
         SetDialogueText();
 
