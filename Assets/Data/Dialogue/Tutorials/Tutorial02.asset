@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
+  m_Name: Tutorial02
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogueText: Okay yeah, I got the hang of this still. Now time to do some wiring
+    isPlayer: 1
+  - dialogueText: Firstly, I see there are some spare parts over there in that toolbox.
+      I can use that to build up a solarpanel on the old wiring box
+    isPlayer: 1
+  - dialogueText: I do that just by clickin on it, and if I have the parts they get
+      added. Once it has enough parts it will get built and start working
+    isPlayer: 1
+  - dialogueText: I can remove parts from a existing panel by right clicking, in
+      case I don't need it anymore
+    isPlayer: 1
