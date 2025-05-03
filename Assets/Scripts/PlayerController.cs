@@ -196,6 +196,13 @@ public class PlayerController : MonoBehaviour
 
             Destroy(pickup.gameObject);
         }
+        else if (collision.CompareTag("Tutorial"))
+        {
+            TutorialArrow tutorial = collision.GetComponent<TutorialArrow>();
+
+            _uiManager.Value.ActivateDialogue(tutorial.GetTutorialDialogue(), "", null, _dialoguePotraitSprite);
+            Destroy(collision.gameObject);
+        }
     }
 
     private void CheckMovement()

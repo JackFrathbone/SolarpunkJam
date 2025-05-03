@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Water : MonoBehaviour
+public class VisualSwitch : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private List<Sprite> _emptySprites = new();

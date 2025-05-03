@@ -15,6 +15,7 @@ TagManager:
   - Cable
   - JunctionBox
   - CablePickup
+  - Tutorial
   layers:
   - Default
   - TransparentFX
