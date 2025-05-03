@@ -2,6 +2,7 @@ using RenderHeads.Services;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaterInput : MonoBehaviour
 {
@@ -11,12 +12,17 @@ public class WaterInput : MonoBehaviour
 
     [SerializeField] private List<VisualSwitch> _connectedVisuals = new();
 
+    [SerializeField] private UnityEvent _RunOnceEvent;
+    [SerializeField] private UnityEvent _RunOnActivateEvent;
+
     [Header("References")]
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
     private int _currentWaterAmount;
     private bool _hasWater;
+
+    private bool _hasRunOnce;
 
     private TextMeshPro _textMeshPro;
 
@@ -150,6 +156,14 @@ public class WaterInput : MonoBehaviour
         {
             blocker.OpenBlocker();
         }
+
+        if (!_hasRunOnce)
+        {
+            _RunOnceEvent.Invoke();
+            _hasRunOnce = true;
+        }
+
+        _RunOnActivateEvent.Invoke();
     }
 
     private void Deactivate()

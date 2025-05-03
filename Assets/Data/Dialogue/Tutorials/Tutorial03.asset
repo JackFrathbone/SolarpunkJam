@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
+  m_Name: Tutorial03
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogueText: Perfect, just as I was trained to do. Now for the fiddly bit, which
+      is wiring up power sources to water pumps with cables
+    isPlayer: 1
+  - dialogueText: So it basically works the same as water pipes, I just need to switch
+      from pipe mode to cable mode, and I place thema and remove them just like pipes
+      with left and right clicking
+    isPlayer: 1
+  - dialogueText: Water tanks with an attached pump need power to provide water.
+      The tank above me has a pump that isn't connected to that nearby solar panel
+    isPlayer: 1
+  - dialogueText: I just need to grab that box of cables ahead, switch to cable mode
+      and connect up the solar panel to the pump next to the tank
+    isPlayer: 1
+  - dialogueText: With both of these tanks workign I can fill up the ponds by the
+      statue, as it needs 12 water and each tank provides only six. So I need to
+      connect both to the tap
+    isPlayer: 1
