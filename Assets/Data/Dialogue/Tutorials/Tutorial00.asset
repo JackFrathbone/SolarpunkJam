@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
+  m_Name: Tutorial00
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogueText: Whew that was a long trip! Once I've sorted out this towns water
+      they need to do something about that road, the bus was not happy
+    isPlayer: 1
+  - dialogueText: Now that I'm here, think my first step would be to find the mayor
+      or whatever they call the boss these days, get my bearings
+    isPlayer: 1
+  - dialogueText: I shouldn't forget what I learnt in the training program, especially
+      that I can walk using [WASD] and I can talk to people by clicking on their
+      heads... (always thought that seemed a bit rude though)
+    isPlayer: 1

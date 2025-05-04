@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -13,6 +14,7 @@ public class Character : MonoBehaviour
 
     [Header("Data")]
     private DialogueObject _currentDialogue;
+    private List<DialogueObject> _runDialogues = new();
 
     private void OnValidate()
     {
@@ -47,8 +49,23 @@ public class Character : MonoBehaviour
         return _characterSprite;
     }
 
+    public void SetNewDialogue(DialogueObject dialogueObject)
+    {
+        _currentDialogue = dialogueObject;
+    }
+
     public DialogueObject GetCurrentDialogue()
     {
+        if (!_runDialogues.Contains(_currentDialogue))
+        {
+            _runDialogues.Add(_currentDialogue);
+        }
+
         return _currentDialogue;
+    }
+
+    public List<DialogueObject> GetRunDialogues()
+    {
+        return _runDialogues;
     }
 }

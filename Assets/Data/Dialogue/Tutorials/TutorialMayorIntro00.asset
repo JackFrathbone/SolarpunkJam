@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
+  m_Name: TutorialMayorIntro00
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogueText: Hallo! You must be the plumber we've been waiting for!
+    isPlayer: 0
+  - dialogueText: Hello, it's actually a "renewable infrastructure engineer" but
+      plumber has a friendlier tone haha. I'm [character name]
+    isPlayer: 1
+  - dialogueText: Pleased to meet you Mr Engineer, I am the mayor here, though it's
+      alot less formal than it sounds, I mostly help people get along in town so
+      we can get stuff done
+    isPlayer: 0
+  - dialogueText: We are all so excited to have you here, the drought was not kind
+      to us and we had one too many fights over boreholes and lawns, aside from our
+      crops being ruined
+    isPlayer: 0
+  - dialogueText: And we all realised how badly everything here was setup before,
+      we know we have enough but it's not built for sharing. When we heard about
+      the programme we knew we needed to apply
+    isPlayer: 0
+  - dialogueText: I'm looking foward to getting started, though there has been some
+      mixup and none of my supplies semmed to have gotten here ahead of me, so looks
+      like I'll be making do in the meanwhile
+    isPlayer: 1
+  - dialogueText: Where would you like me to start?
+    isPlayer: 1
+  - dialogueText: Yes! Just to see what you can do, you see that our ponds here by
+      the town hall are dry. We have rain tanks for them and a borehold, but it was
+      never setup to use that system, so when the municipal water ran dry they did
+      too
+    isPlayer: 0
+  - dialogueText: So if you just head down, I'll move away the cones for you and
+      you can get started. Once you;ve done that I can point you towards the places
+      in town that need your help
+    isPlayer: 0
+  - dialogueText: Great, let me get right to it!
+    isPlayer: 1

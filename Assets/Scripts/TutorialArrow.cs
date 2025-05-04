@@ -10,6 +10,16 @@ public class TutorialArrow : MonoBehaviour
 
     [SerializeField] private UnityEvent _RunOnDestroyEvent;
 
+    [SerializeField] bool _startHidden;
+
+    private void Start()
+    {
+        if (_startHidden)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     public DialogueObject GetTutorialDialogue()
     {
         return _tutorialDialogue;
