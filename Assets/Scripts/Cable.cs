@@ -34,12 +34,15 @@ public class Cable : MonoBehaviour
     private bool _downleft;
     private bool _downRight;
 
+    private int _defaultLayer;
     private void Start()
     {
         _worldWaterManager.Value.AddCable(this);
 
         _renderer = GetComponent<SpriteRenderer>();
         _renderer.sprite = _pipeSprites[10];
+
+        _defaultLayer = gameObject.layer;
     }
 
     private void FixedUpdate()
@@ -72,7 +75,7 @@ public class Cable : MonoBehaviour
         _hit = Physics2D.Raycast(transform.position, _isometricDownRight, 0.5f, _layerMask);
         CheckHit(3);
 
-        gameObject.layer = 0;
+        gameObject.layer = _defaultLayer;
     }
 
     private void CheckHit(int direction)
@@ -107,6 +110,10 @@ public class Cable : MonoBehaviour
         else if (_hit.collider.CompareTag("WaterSourcePump"))
         {
             _connectedPumps.Add(_hit.collider.GetComponent<WaterSourcePump>());
+            connected = true;
+        }
+        else if (_hit.collider.CompareTag("JunctionBox"))
+        {
             connected = true;
         }
 

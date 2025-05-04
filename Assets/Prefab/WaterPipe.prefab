@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4358561326421543167}
   - component: {fileID: 5132447085748681484}
   - component: {fileID: 4423146325083246136}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WaterPipe
   m_TagString: Pipe
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 9
   _pipeSprites:
   - {fileID: 21300000, guid: 08a7c289b2c48b544abb3a8ebec25b21, type: 3}
   - {fileID: 21300000, guid: 613dc27acf7af244bbcde1547ab2942c, type: 3}
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!60 &4423146325083246136
 PolygonCollider2D:
   m_ObjectHideFlags: 0

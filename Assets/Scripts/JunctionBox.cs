@@ -33,6 +33,7 @@ public class JunctionBox : MonoBehaviour
         }
         else
         {
+            _renderer = GetComponent<SpriteRenderer>();
             _renderer.flipX = false;
         }
     }

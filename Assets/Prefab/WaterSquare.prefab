@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b325a2af117ca468125ff38cda420f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connectedWaterInput: {fileID: 0}
   _emptySprites:
   - {fileID: 21300000, guid: 692db940378938a45b66c911625d9c9a, type: 3}
   - {fileID: 21300000, guid: 6418ab264786420449c8337e3a4935a3, type: 3}
@@ -120,7 +119,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!60 &5778739461154419574
 PolygonCollider2D:
   m_ObjectHideFlags: 0
