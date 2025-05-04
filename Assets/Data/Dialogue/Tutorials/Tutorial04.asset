@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
+  m_Name: Tutorial04
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogueText: Okay, looks like I need to do some wiring here. The water tank
+      here is connected but it doesnt have power to its attached pump on th left
+    isPlayer: 1
+  - dialogueText: I need to grab the cables in that box here, then switch into cable
+      placing mode using [Q] or clicking the toggle on my hud. Then I can place cables
+      just like water pipes, by left and right clicking!
+    isPlayer: 1
+  - dialogueText: Normally you cant cross cables and water pipes, so you need a junction
+      box like the one on this set of pipes, I just need to connect a cable to either
+      end
+    isPlayer: 1
+  - dialogueText: Now once the pump is powered water will start flowing from this
+      tank into the connected input tap!
+    isPlayer: 1

@@ -13,20 +13,13 @@ MonoBehaviour:
   m_Name: Tutorial03
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: Perfect, just as I was trained to do. Now for the fiddly bit, which
-      is wiring up power sources to water pumps with cables
+  - dialogueText: So this blue output tap is connected to the input tap that we just
+      hooked up. This allows water to travel further or be split up
     isPlayer: 1
-  - dialogueText: So it basically works the same as water pipes, I just need to switch
-      from pipe mode to cable mode, and I place thema and remove them just like pipes
-      with left and right clicking
+  - dialogueText: You can see by the water icon that it is connected and has water
+      currently
     isPlayer: 1
-  - dialogueText: Water tanks with an attached pump need power to provide water.
-      The tank above me has a pump that isn't connected to that nearby solar panel
-    isPlayer: 1
-  - dialogueText: I just need to grab that box of cables ahead, switch to cable mode
-      and connect up the solar panel to the pump next to the tank
-    isPlayer: 1
-  - dialogueText: With both of these tanks workign I can fill up the ponds by the
-      statue, as it needs 12 water and each tank provides only six. So I need to
-      connect both to the tap
+  - dialogueText: The ponds here need 12 water, but this tap and the other nearby
+      tank only have six each, so I need to route both of them to the input tap for
+      the pond
     isPlayer: 1
