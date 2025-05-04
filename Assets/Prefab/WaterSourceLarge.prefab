@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentWaterInput: {fileID: 0}
-  _waterSourceAmount: 6
+  _waterSourceAmount: 12
   _connectedPumps: []
 --- !u!212 &3993960860638309454
 SpriteRenderer:
