@@ -24,6 +24,19 @@ public class JunctionBox : MonoBehaviour
     private readonly Vector2 _isometricUpLeft = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 150f), Mathf.Sin(Mathf.Deg2Rad * 150f)).normalized;
     private readonly Vector2 _isometricDownRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 330f), Mathf.Sin(Mathf.Deg2Rad * 330f)).normalized;
 
+    private void OnValidate()
+    {
+        if (_flip)
+        {
+            _renderer = GetComponent<SpriteRenderer>();
+            _renderer.flipX = true;
+        }
+        else
+        {
+            _renderer.flipX = false;
+        }
+    }
+
     private void Start()
     {
         _renderer = GetComponent<SpriteRenderer>();
@@ -31,6 +44,10 @@ public class JunctionBox : MonoBehaviour
         if (_flip)
         {
             _renderer.flipX = true;
+        }
+        else
+        {
+            _renderer.flipX = false;
         }
     }
 
