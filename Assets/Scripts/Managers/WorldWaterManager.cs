@@ -97,7 +97,7 @@ public class WorldWaterManager : MonoService
 
                 if (currentPipe.isEndpoint == true)
                 {
-                    Debug.Log("Found attached water input!");
+                    //Debug.Log("Found attached water input!");
                     foreach (WaterInput input in currentPipe.GetAttachedInputs())
                     {
                         input.AddConnectedWaterSource(waterSource);
@@ -164,7 +164,7 @@ public class WorldWaterManager : MonoService
 
                 if (currentCable.isEndpoint == true)
                 {
-                    Debug.Log("Found attached pump!");
+                    //Debug.Log("Found attached pump!");
                     foreach (WaterSourcePump pump in currentCable.GetAttachedPumps())
                     {
                         pump.AddConnectedPowerSource(powerSource);

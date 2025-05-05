@@ -116,6 +116,10 @@ public class Cable : MonoBehaviour
         {
             connected = true;
         }
+        else if (_hit.collider.CompareTag("PowerSource"))
+        {
+            connected = true;
+        }
 
         if (connected)
         {
