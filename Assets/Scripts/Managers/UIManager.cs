@@ -1,6 +1,7 @@
 using RenderHeads.Services;
 using TMPro;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class UIManager : MonoService
@@ -19,8 +20,17 @@ public class UIManager : MonoService
     [SerializeField] private Button _nextButton;
     [SerializeField] private Image _playerPotrait;
     [SerializeField] private Image _characterPotrait;
+    [SerializeField] private GameObject _dialogueGO;
+    [SerializeField] private Sprite _dialogueLeftImg;
+    [SerializeField] private Sprite _dialogueRightImg;
+    [SerializeField] private TextMeshProUGUI _speakerName;
+    [SerializeField] private Transform _speakerNameLeft;
+    [SerializeField] private Transform _speakerNameRight;
+
 
     [SerializeField] private Button _modeButton;
+    [SerializeField] private Sprite _modePipesImg;
+    [SerializeField] private Sprite _modeCablesImg;
 
     [Header("Data")]
     private DialogueObject _currentDialogueObject;
@@ -33,6 +43,7 @@ public class UIManager : MonoService
 
         _modeButton.onClick.AddListener(SwitchPlacementMode);
         _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Pipes";
+        _modeButton.GetComponent<Image>().sprite = _modePipesImg;
     }
 
     public void SetWaterPipeCounter(int i)
@@ -64,13 +75,18 @@ public class UIManager : MonoService
 
         if (dialogue.isPlayer)
         {
-            _characterPotrait.transform.localScale = Vector3.one;
-            _playerPotrait.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            _characterPotrait.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            _playerPotrait.transform.localScale = new Vector3(1f, 1f, 1f);
+            _dialogueGO.GetComponent<Image>().sprite = _dialogueLeftImg;
+            _speakerName.GetComponent<Transform>().position = _speakerNameLeft.position;
+
         }
         else
         {
-            _characterPotrait.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            _playerPotrait.transform.localScale = Vector3.one;
+            _characterPotrait.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            _playerPotrait.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            _dialogueGO.GetComponent<Image>().sprite = _dialogueRightImg;
+            _speakerName.GetComponent<Transform>().position = _speakerNameRight.position;
         }
 
         _dialogueText.text = dialogue.dialogueText;
@@ -138,10 +154,12 @@ public class UIManager : MonoService
         if (currentMode)
         {
             _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Cables";
+            _modeButton.GetComponent<Image>().sprite = _modeCablesImg;
         }
         else
         {
             _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Pipes";
+            _modeButton.GetComponent<Image>().sprite = _modePipesImg;
         }
     }
 
