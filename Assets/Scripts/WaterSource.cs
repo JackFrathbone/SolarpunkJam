@@ -15,6 +15,8 @@ public class WaterSource : MonoBehaviour
     private List<WaterPipe> _connectedPipes = new();
     private TextMeshPro _textMeshPro;
 
+    [SerializeField] GameObject _ActiveIcon;
+
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -31,6 +33,11 @@ public class WaterSource : MonoBehaviour
     {
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
         _textMeshPro.text = _waterSourceAmount.ToString();
+
+        if(_parentWaterInput != null)
+        {
+            _ActiveIcon.SetActive(false);
+        }
     }
 
     private void Start()
@@ -98,11 +105,15 @@ public class WaterSource : MonoBehaviour
 
         if (_parentWaterInput.GetHasWater())
         {
+            _ActiveIcon.SetActive(true);
+
             _textMeshPro.gameObject.SetActive(true);
             return false;
         }
         else
         {
+            _ActiveIcon.SetActive(false);
+
             _textMeshPro.gameObject.SetActive(false);
             return true;
         }

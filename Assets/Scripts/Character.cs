@@ -10,7 +10,9 @@ public class Character : MonoBehaviour
     [SerializeField] DialogueObject _defaultDialogue;
 
     [Header("References")]
-    private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+
+    [SerializeField] private GameObject _arrow;
 
     [Header("Data")]
     private DialogueObject _currentDialogue;
@@ -20,14 +22,21 @@ public class Character : MonoBehaviour
     {
         gameObject.name = "Character-" + _characterName;
 
-        GetComponentInChildren<SpriteRenderer>().sprite = _characterSprite;
+        _spriteRenderer.sprite = _characterSprite;
     }
 
     private void Start()
     {
         _currentDialogue = _defaultDialogue;
 
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (_currentDialogue != null)
+        {
+            _arrow.SetActive(true);
+        }
+        else
+        {
+            _arrow.SetActive(false);
+        }
 
         if (_characterSprite != null)
         {
@@ -47,6 +56,8 @@ public class Character : MonoBehaviour
 
     public void SetNewDialogue(DialogueObject dialogueObject)
     {
+        _arrow.SetActive(true);
+
         _currentDialogue = dialogueObject;
     }
 
@@ -57,7 +68,13 @@ public class Character : MonoBehaviour
             _runDialogues.Add(_currentDialogue);
         }
 
-        return _currentDialogue;
+        DialogueObject dialogueObject = _currentDialogue;
+
+        _arrow.SetActive(false);
+
+        _currentDialogue = null;
+
+        return dialogueObject;
     }
 
     public List<DialogueObject> GetRunDialogues()
