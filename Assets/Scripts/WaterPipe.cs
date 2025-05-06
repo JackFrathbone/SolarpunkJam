@@ -10,6 +10,7 @@ public class WaterPipe : MonoBehaviour
     [Header("References")]
     [SerializeField] List<Sprite> _pipeSprites = new();
     private SpriteRenderer _renderer;
+    private Animator _animator;
 
     private LazyService<WorldWaterManager> _worldWaterManager;
 
@@ -40,8 +41,10 @@ public class WaterPipe : MonoBehaviour
     {
         _worldWaterManager.Value.AddWaterPipe(this);
 
-        _renderer = GetComponent<SpriteRenderer>();
+        _renderer = GetComponentInChildren<SpriteRenderer>();
         _renderer.sprite = _pipeSprites[10];
+
+        _animator = GetComponent<Animator>();
 
         _defaultLayer = gameObject.layer;
     }
@@ -239,11 +242,13 @@ public class WaterPipe : MonoBehaviour
 
         if (hasWater)
         {
-            _renderer.color = Color.blue;
+            _animator.SetBool("Active", true);
+            //_renderer.color = Color.blue;
         }
         else
         {
-            _renderer.color = Color.white;
+            _animator.SetBool("Active", false);
+            //_renderer.color = Color.white;
         }
     }
 

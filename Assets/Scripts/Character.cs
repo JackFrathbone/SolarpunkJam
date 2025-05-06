@@ -20,11 +20,7 @@ public class Character : MonoBehaviour
     {
         gameObject.name = "Character-" + _characterName;
 
-        if (_characterSprite != null)
-        {
-            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            _spriteRenderer.sprite = _characterSprite;
-        }
+        GetComponentInChildren<SpriteRenderer>().sprite = _characterSprite;
     }
 
     private void Start()

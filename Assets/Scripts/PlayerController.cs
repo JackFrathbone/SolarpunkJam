@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                _placingCables = !_placingCables;
+                SwitchMode();
             }
 
             _horizontalInput = Input.GetAxis("Horizontal");
@@ -347,5 +347,10 @@ public class PlayerController : MonoBehaviour
     public void SetFreezeInput(bool freezeInput)
     {
         _freezeInput = freezeInput;
+    }
+
+    public bool SwitchMode()
+    {
+        return _placingCables = !_placingCables;
     }
 }

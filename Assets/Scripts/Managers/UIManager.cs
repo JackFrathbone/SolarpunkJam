@@ -20,6 +20,8 @@ public class UIManager : MonoService
     [SerializeField] private Image _playerPotrait;
     [SerializeField] private Image _characterPotrait;
 
+    [SerializeField] private Button _modeButton;
+
     [Header("Data")]
     private DialogueObject _currentDialogueObject;
     private int _currentDialogueIndex;
@@ -27,7 +29,10 @@ public class UIManager : MonoService
     private void Start()
     {
         _dialogue.SetActive(false);
-        _nextButton.onClick.AddListener(delegate { NextDialogue(); }); ;
+        _nextButton.onClick.AddListener(delegate { NextDialogue(); });
+
+        _modeButton.onClick.AddListener(SwitchPlacementMode);
+        _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Pipes";
     }
 
     public void SetWaterPipeCounter(int i)
@@ -124,6 +129,20 @@ public class UIManager : MonoService
         _dialogue.SetActive(false);
 
         _gameManager.Value.UnPauseGame();
+    }
+
+    private void SwitchPlacementMode()
+    {
+        bool currentMode = _gameManager.Value.SwitchPlayerPlacementMode();
+
+        if (currentMode)
+        {
+            _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Cables";
+        }
+        else
+        {
+            _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Pipes";
+        }
     }
 
 }

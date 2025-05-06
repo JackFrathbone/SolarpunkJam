@@ -7,6 +7,8 @@ public class VisualSwitch : MonoBehaviour
     [SerializeField] private List<Sprite> _emptySprites = new();
     [SerializeField] private List<Sprite> _fullSprites= new();
 
+    [SerializeField] private bool _startActive;
+
     [Header("References")]
     private WaterInput _connectedWaterInput;
     private SpriteRenderer _renderer;
@@ -22,11 +24,23 @@ public class VisualSwitch : MonoBehaviour
         _emptySprite = _emptySprites[Random.Range(0, _emptySprites.Count)];
         _fullSprite = _fullSprites[Random.Range(0, _fullSprites.Count)];
 
-        _renderer.sprite = _emptySprite;
+        if (!_startActive)
+        {
+            _renderer.sprite = _emptySprite;
+        }
+        else
+        {
+            _renderer.sprite = _fullSprite;
+        }
     }
 
     private void FixedUpdate()
     {
+        if (_startActive)
+        {
+            return;
+        }
+
         if (_connectedWaterInput != null)
         {
             if (_connectedWaterInput.GetHasWater())

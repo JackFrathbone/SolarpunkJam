@@ -15,4 +15,14 @@ public class GameManager : MonoService
     {
         playerController.SetFreezeInput(false);
     }
+
+    public bool SwitchPlayerPlacementMode()
+    {
+        if (playerController != null)
+        {
+            return playerController.SwitchMode();
+        }
+
+        return false;
+    }
 }
