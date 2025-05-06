@@ -11,11 +11,13 @@ public class Cable : MonoBehaviour
     [SerializeField] List<Sprite> _pipeSprites = new();
     private SpriteRenderer _renderer;
 
+    private ParticleSystem _particleSystem;
+
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
     public bool isEndpoint;
-    public bool hasWater;
+    public bool hasPower;
 
     private RaycastHit2D _hit;
 
@@ -41,6 +43,9 @@ public class Cable : MonoBehaviour
 
         _renderer = GetComponent<SpriteRenderer>();
         _renderer.sprite = _pipeSprites[10];
+
+        _particleSystem = GetComponentInChildren<ParticleSystem>();
+        _particleSystem.gameObject.SetActive(false);
 
         _defaultLayer = gameObject.layer;
     }
@@ -236,13 +241,13 @@ public class Cable : MonoBehaviour
         }
 
 
-        if (hasWater)
+        if (hasPower)
         {
-            _renderer.color = Color.blue;
+            _particleSystem.gameObject.SetActive(true);
         }
         else
         {
-            _renderer.color = Color.white;
+            _particleSystem.gameObject.SetActive(false);
         }
     }
 

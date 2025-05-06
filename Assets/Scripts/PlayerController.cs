@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     private Tilemap _tileMap;
 
+    private ParticleSystem _footParticles;
+
     private LazyService<GameManager> _gameManager;
     private LazyService<WorldWaterManager> _worldWaterManager;
     private LazyService<UIManager> _uiManager;
@@ -82,6 +84,8 @@ public class PlayerController : MonoBehaviour
 
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _footParticles = GetComponentInChildren<ParticleSystem>();
+        _footParticles.Stop();
 
         _tileMap = FindObjectOfType<Tilemap>();
     }
@@ -97,6 +101,15 @@ public class PlayerController : MonoBehaviour
 
             _horizontalInput = Input.GetAxis("Horizontal");
             _verticalInput = Input.GetAxis("Vertical");
+
+            if(_horizontalInput != 0 || _verticalInput != 0)
+            {
+                _footParticles.Play();
+            }
+            else
+            {
+                _footParticles.Stop();
+            }
 
             _mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

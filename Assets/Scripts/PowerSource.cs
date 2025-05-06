@@ -10,6 +10,8 @@ public class PowerSource : MonoBehaviour
     [SerializeField] private int _totalParts = 6;
 
     [Header("References")]
+    [SerializeField] private GameObject _activeIcon;
+
     private List<Cable> _connectedCables = new();
 
     private TextMeshPro _textMeshPro;
@@ -41,6 +43,12 @@ public class PowerSource : MonoBehaviour
         {
             _isActive = _startActive;
             _currentParts = _totalParts;
+
+            _activeIcon.SetActive(true);
+        }
+        else
+        {
+            _activeIcon.SetActive(false);
         }
 
         CheckActive();
@@ -135,11 +143,15 @@ public class PowerSource : MonoBehaviour
         {
             _textMeshPro.gameObject.SetActive(false);
             _isActive = true;
+
+            _activeIcon.SetActive(true);
         }
         else
         {
             _textMeshPro.gameObject.SetActive(true);
             _isActive = false;
+
+            _activeIcon.SetActive(false);
         }
 
         _textMeshPro.text = _currentParts + "/" + _totalParts;

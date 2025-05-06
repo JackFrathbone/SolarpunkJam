@@ -180,6 +180,19 @@ public class WorldWaterManager : MonoService
                     }
                 }
             }
+
+            //Set the visuals
+            foreach (Cable cable in _cables)
+            {
+                if (_cablesActive.Contains(cable))
+                {
+                    cable.hasPower = true;
+                }
+                else
+                {
+                    cable.hasPower = false;
+                }
+            }
         }
     }
 }

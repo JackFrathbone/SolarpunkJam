@@ -16,6 +16,8 @@ public class WaterInput : MonoBehaviour
     [SerializeField] private UnityEvent _RunOnActivateEvent;
 
     [Header("References")]
+    [SerializeField] private GameObject _activeIcon;
+
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -48,6 +50,8 @@ public class WaterInput : MonoBehaviour
         _worldWaterManager.Value.AddWaterInput(this);
 
         Deactivate();
+
+        _activeIcon.SetActive(false);
 
         foreach (VisualSwitch visual in _connectedVisuals)
         {
@@ -152,6 +156,8 @@ public class WaterInput : MonoBehaviour
 
     private void Activate()
     {
+        _activeIcon.SetActive(true);
+
         foreach (Blocker blocker in _connectedBlockers)
         {
             blocker.OpenBlocker();
@@ -168,6 +174,8 @@ public class WaterInput : MonoBehaviour
 
     private void Deactivate()
     {
+        _activeIcon.SetActive(false);
+
         foreach (Blocker blocker in _connectedBlockers)
         {
             blocker.CloseBlocker();
