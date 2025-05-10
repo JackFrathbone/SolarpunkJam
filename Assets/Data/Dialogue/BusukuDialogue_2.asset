@@ -13,13 +13,6 @@ MonoBehaviour:
   m_Name: BusukuDialogue_2
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Gives you pipes]
-
-      [Start hooking us up but need solar panel]
-
-      [Go
-      see Becky for parts]'
-    isPlayer: 0
   - dialogueText: Ah! Well done on getting the WATER MAIN fixed! Have some wild garlic
       for your troubles and these SPARE PIPES you can use!
     isPlayer: 0

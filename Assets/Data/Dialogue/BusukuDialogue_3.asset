@@ -13,13 +13,6 @@ MonoBehaviour:
   m_Name: BusukuDialogue_3
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Thanks for hooking stuff up yay!]
-
-      [Gives cables]
-
-      [Go
-      to old couple on other side]'
-    isPlayer: 0
   - dialogueText: Wow! I'm so glad to have water, back, you did a good job Handyman!
     isPlayer: 0
   - dialogueText: 'Here''s some cable for your trouble (and more garlic too). '
