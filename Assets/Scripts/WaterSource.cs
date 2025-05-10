@@ -11,6 +11,8 @@ public class WaterSource : MonoBehaviour
     [SerializeField, Tooltip("How much water this water source has")] private int _waterSourceAmount = 6;
     [SerializeField] private List<WaterSourcePump> _connectedPumps = new();
 
+    [SerializeField] private Color _textBoxIncorrectAmountColour;
+
     [Header("References")]
     private List<WaterPipe> _connectedPipes = new();
     private TextMeshPro _textMeshPro;
@@ -21,6 +23,8 @@ public class WaterSource : MonoBehaviour
     [SerializeField] private GameObject _ArrowDownLeft;
     [SerializeField] private GameObject _ArrowUpLeft;
     [SerializeField] private GameObject _ArrowDownRight;
+
+    private SpriteRenderer _textBackgroundRenderer;
 
     private LazyService<WorldWaterManager> _worldWaterManager;
 
@@ -39,8 +43,11 @@ public class WaterSource : MonoBehaviour
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
         _textMeshPro.text = _waterSourceAmount.ToString();
 
+        _textBackgroundRenderer = _textMeshPro.transform.parent.gameObject.GetComponent<SpriteRenderer>();
+
         if (_parentWaterInput != null)
         {
+            _textMeshPro.transform.parent.gameObject.SetActive(false);
             _ActiveIcon.SetActive(false);
         }
     }
@@ -67,6 +74,14 @@ public class WaterSource : MonoBehaviour
 
         CheckPowered();
         CheckForConnections();
+
+        if (!_isPowered)
+        {
+            _ArrowUpRight.SetActive(false);
+            _ArrowDownRight.SetActive(false);
+            _ArrowUpLeft.SetActive(false);
+            _ArrowDownLeft.SetActive(false);
+        }
     }
 
     private void CheckForConnections()
@@ -175,6 +190,7 @@ public class WaterSource : MonoBehaviour
         if (_connectedPumps.Count == 0)
         {
             _isPowered = true;
+            _textBackgroundRenderer.color = Color.white;
             return;
         }
 
@@ -201,6 +217,15 @@ public class WaterSource : MonoBehaviour
         }
 
         _isPowered = poweredUp;
+
+        if (_isPowered)
+        {
+            _textBackgroundRenderer.color = Color.white;
+        }
+        else
+        {
+            _textBackgroundRenderer.color = _textBoxIncorrectAmountColour;
+        }
     }
 
     private void OnDrawGizmosSelected()

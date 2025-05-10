@@ -223,6 +223,7 @@ MonoBehaviour:
   _parentWaterInput: {fileID: 0}
   _waterSourceAmount: 6
   _connectedPumps: []
+  _textBoxIncorrectAmountColour: {r: 0.87058824, g: 0.20784314, b: 0.16470589, a: 1}
   _ActiveIcon: {fileID: 4884426634899940157}
   _ArrowUpRight: {fileID: 6599049327929884929}
   _ArrowDownLeft: {fileID: 7611754049132175672}
