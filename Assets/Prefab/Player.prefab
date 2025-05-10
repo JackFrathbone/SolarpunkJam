@@ -597,10 +597,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3861843c334b35f4085e687503a22432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
-  _startingPipes: 24
-  _startingCables: 24
-  _startingParts: 24
+  _moveSpeed: 2.5
+  _startingPipes: 0
+  _startingCables: 0
+  _startingParts: 0
   _dialoguePotraitSprite: {fileID: 21300000, guid: faa9c398bbc770e439e3a95eae4d8db7, type: 3}
   _waterPipePrefab: {fileID: 1564977507280448737, guid: 654651d2f6e3df14193ab33fc68328fb, type: 3}
   _cablePrefab: {fileID: 4890230999722754692, guid: ab8ec23d08a7b1c4b970bb8ce97d9994, type: 3}

@@ -12,6 +12,8 @@ public class PowerSource : MonoBehaviour
     [SerializeField] Sprite _activeSprite;
     [SerializeField] Sprite _inactiveSprite;
 
+    [SerializeField] AudioClip _changePartsClip;
+
     [Header("References")]
     [SerializeField] private GameObject _activeIcon;
 
@@ -19,6 +21,7 @@ public class PowerSource : MonoBehaviour
     private List<Cable> _connectedCables = new();
     private TextMeshPro _textMeshPro;
 
+    private LazyService<GameManager> _gameManager;
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -120,6 +123,8 @@ public class PowerSource : MonoBehaviour
     {
         if (_currentParts < _totalParts)
         {
+            _gameManager.Value.PlayAudioClip(_changePartsClip, 0.25f, 1f);
+
             _currentParts++;
             CheckActive();
             return true;
@@ -135,6 +140,8 @@ public class PowerSource : MonoBehaviour
     {
         if (_currentParts > 0)
         {
+            _gameManager.Value.PlayAudioClip(_changePartsClip, 0.25f, 0.85f);
+
             _currentParts--;
             CheckActive();
             return true;

@@ -7,12 +7,15 @@ public class Cable : MonoBehaviour
     [Header("Settings")]
     [SerializeField] LayerMask _layerMask;
 
+    [SerializeField] AudioClip _placeAudioClip;
+
     [Header("References")]
     [SerializeField] List<Sprite> _pipeSprites = new();
     private SpriteRenderer _renderer;
 
     private ParticleSystem _particleSystem;
 
+    private LazyService<GameManager> _gameManager;
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -48,6 +51,8 @@ public class Cable : MonoBehaviour
         _particleSystem.gameObject.SetActive(false);
 
         _defaultLayer = gameObject.layer;
+
+        _gameManager.Value.PlayAudioClip(_placeAudioClip, 0.25f, Random.Range(1f, 1.5f));
     }
 
     private void FixedUpdate()
@@ -58,6 +63,11 @@ public class Cable : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (_gameManager.Value != null)
+        {
+            _gameManager.Value.PlayAudioClip(_placeAudioClip, 0.25f, 0.5f);
+        }
+
         _worldWaterManager.Value.RemoveCable(this);
     }
 
