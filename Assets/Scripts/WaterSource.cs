@@ -107,14 +107,14 @@ public class WaterSource : MonoBehaviour
         {
             _ActiveIcon.SetActive(true);
 
-            _textMeshPro.gameObject.SetActive(true);
+            _textMeshPro.transform.parent.gameObject.SetActive(true);
             return false;
         }
         else
         {
             _ActiveIcon.SetActive(false);
 
-            _textMeshPro.gameObject.SetActive(false);
+            _textMeshPro.transform.parent.gameObject.SetActive(false);
             return true;
         }
     }

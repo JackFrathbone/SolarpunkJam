@@ -9,11 +9,14 @@ public class PowerSource : MonoBehaviour
     [SerializeField] private bool _startActive;
     [SerializeField] private int _totalParts = 6;
 
+    [SerializeField] Sprite _activeSprite;
+    [SerializeField] Sprite _inactiveSprite;
+
     [Header("References")]
     [SerializeField] private GameObject _activeIcon;
 
+    private SpriteRenderer _spriteRenderer;
     private List<Cable> _connectedCables = new();
-
     private TextMeshPro _textMeshPro;
 
     private LazyService<WorldWaterManager> _worldWaterManager;
@@ -33,6 +36,7 @@ public class PowerSource : MonoBehaviour
     private void Awake()
     {
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -41,6 +45,8 @@ public class PowerSource : MonoBehaviour
 
         if (_startActive)
         {
+            _spriteRenderer.sprite = _activeSprite;
+
             _isActive = _startActive;
             _currentParts = _totalParts;
 
@@ -48,6 +54,8 @@ public class PowerSource : MonoBehaviour
         }
         else
         {
+            _spriteRenderer.sprite = _inactiveSprite;
+
             _activeIcon.SetActive(false);
         }
 
@@ -141,14 +149,18 @@ public class PowerSource : MonoBehaviour
     {
         if (_currentParts >= _totalParts)
         {
-            _textMeshPro.gameObject.SetActive(false);
+            _spriteRenderer.sprite = _activeSprite;
+
+            _textMeshPro.transform.parent.gameObject.SetActive(false);
             _isActive = true;
 
             _activeIcon.SetActive(true);
         }
         else
         {
-            _textMeshPro.gameObject.SetActive(true);
+            _spriteRenderer.sprite = _inactiveSprite;
+
+            _textMeshPro.transform.parent.gameObject.SetActive(true);
             _isActive = false;
 
             _activeIcon.SetActive(false);
