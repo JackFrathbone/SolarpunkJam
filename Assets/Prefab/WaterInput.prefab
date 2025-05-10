@@ -229,6 +229,7 @@ MonoBehaviour:
   _RunOnActivateEvent:
     m_PersistentCalls:
       m_Calls: []
+  _textBoxIncorrectAmountColour: {r: 0.8705883, g: 0.20784315, b: 0.16470589, a: 1}
   _activeIcon: {fileID: 8886633733937600781}
   _ArrowUpRight: {fileID: 4993368723640324890}
   _ArrowDownLeft: {fileID: 424897910932640599}

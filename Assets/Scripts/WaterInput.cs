@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class WaterInput : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class WaterInput : MonoBehaviour
     [SerializeField] private UnityEvent _RunOnceEvent;
     [SerializeField] private UnityEvent _RunOnActivateEvent;
 
+    [SerializeField] private Color _textBoxIncorrectAmountColour;
+
     [Header("References")]
     [SerializeField] private GameObject _activeIcon;
 
@@ -23,6 +26,9 @@ public class WaterInput : MonoBehaviour
     [SerializeField] private GameObject _ArrowDownLeft;
     [SerializeField] private GameObject _ArrowUpLeft;
     [SerializeField] private GameObject _ArrowDownRight;
+
+    private TextMeshPro _textMeshPro;
+    private SpriteRenderer _textBackgroundRenderer;
 
     private LazyService<WorldWaterManager> _worldWaterManager;
 
@@ -32,7 +38,7 @@ public class WaterInput : MonoBehaviour
 
     private bool _hasRunOnce;
 
-    private TextMeshPro _textMeshPro;
+
 
     private List<WaterPipe> _connectedPipes = new();
     private List<WaterSource> _connectedWaterSources = new();
@@ -49,6 +55,8 @@ public class WaterInput : MonoBehaviour
     {
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
         _textMeshPro.text = _currentWaterAmount + "/" + _requiredWaterAmount;
+
+        _textBackgroundRenderer = _textMeshPro.transform.parent.gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -135,10 +143,12 @@ public class WaterInput : MonoBehaviour
 
         if (_hasWater)
         {
+            _textBackgroundRenderer.color = Color.white;
             Activate();
         }
         else
         {
+            _textBackgroundRenderer.color = _textBoxIncorrectAmountColour;
             Deactivate();
         }
 

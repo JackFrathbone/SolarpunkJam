@@ -14,6 +14,8 @@ public class WaterSourcePump : MonoBehaviour
     [SerializeField] private GameObject _ArrowUpLeft;
     [SerializeField] private GameObject _ArrowDownRight;
 
+    private Animator _animator;
+
     LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -27,6 +29,8 @@ public class WaterSourcePump : MonoBehaviour
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
+
         _worldWaterManager.Value.AddWaterPump(this);
 
         _activeIcon.SetActive(false);
@@ -81,6 +85,7 @@ public class WaterSourcePump : MonoBehaviour
     {
         if (_connectedPowerSources.Count == 0)
         {
+            _animator.SetBool("IsActive", false);
             _activeIcon.SetActive(false);
         }
         else
@@ -94,6 +99,7 @@ public class WaterSourcePump : MonoBehaviour
                 }
             }
 
+            _animator.SetBool("IsActive", true);
             _activeIcon.SetActive(hasPower);
         }
     }
