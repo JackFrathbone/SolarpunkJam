@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: Mayor_EndGameDialogue
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Thank you]
-
-      [Got rid of problematic statue]
-
-      [Some
-      ways to go on right path]
-
-      [Statue in your honor represent unity]'
+  - dialogueText: Hello Dustin! Congratulations and thank you for helping Dusty Dorp!
+      You've done so much for our little Karoo town/
+    isPlayer: 0
+  - dialogueText: 'Anytime, I''m always happy to help. A town in need is my friend
+      indeed. '
+    isPlayer: 1
+  - dialogueText: And speaking of towns in need, I'm off to go help more communities
+      like yours take it EEZEE.
+    isPlayer: 1
+  - dialogueText: 'Goodbye Mr Engineer! You can [PRESS ESC] to leave Dusty Dorp.
+      But feel free to drop by again if you''re looking for a friendly place in a
+      little Karoo Town! '
     isPlayer: 0
