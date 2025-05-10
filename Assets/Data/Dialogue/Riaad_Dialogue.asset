@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Riaad_Dialogue
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Hallo] [We need you to connect this tap to go to the town square]
-
-      [Old
-      days]
-
-'
+  - dialogueText: Greetings! Are you the handyman?
+    isPlayer: 0
+  - dialogueText: Ja, I am!
+    isPlayer: 0
+  - dialogueText: 'Fantastic! So, you see that INPUT TAP behind our houses? '
+    isPlayer: 0
+  - dialogueText: Ja?
+    isPlayer: 0
+  - dialogueText: You need to make sure that's connected up, that TAP will bring
+      water back to the town square for the FARM!
     isPlayer: 0

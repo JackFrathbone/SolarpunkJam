@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Wendy_Dialogue
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Wnedy gone trhough alot but this feel better]
-
-      [Fight so
-      much in the old days]
-
-      [No eco back in day]'
+  - dialogueText: Oh! I smell wild garlic, Dr Busuku sent you didn't he? What a sweet
+      man, always looking out for us oldies.
+    isPlayer: 0
+  - dialogueText: No problem, I love old folk too!
+    isPlayer: 1
+  - dialogueText: 'Oh! I see you''re the handyman we sent for. If you want to know
+      more about the water situation on this side of town chat to my husband RIAAD. '
     isPlayer: 0
