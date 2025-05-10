@@ -32,6 +32,7 @@ public class WaterSource : MonoBehaviour
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
+    private bool _hasWater;
     private bool _isPowered;
     private RaycastHit2D _hit;
 
@@ -48,8 +49,11 @@ public class WaterSource : MonoBehaviour
 
         _textBackgroundRenderer = _textMeshPro.transform.parent.gameObject.GetComponent<SpriteRenderer>();
 
+        _hasWater = true;
+
         if (_parentWaterInput != null)
         {
+            _hasWater = false;
             _textMeshPro.transform.parent.gameObject.SetActive(false);
             _ActiveIcon.SetActive(false);
         }
@@ -77,8 +81,9 @@ public class WaterSource : MonoBehaviour
 
         CheckPowered();
         CheckForConnections();
+        UpdateIconVisuals();
 
-        if (!_isPowered)
+        if (!_isPowered || !_hasWater)
         {
             _ArrowUpRight.SetActive(false);
             _ArrowDownRight.SetActive(false);
@@ -150,6 +155,27 @@ public class WaterSource : MonoBehaviour
         }
     }
 
+    private void UpdateIconVisuals()
+    {
+        if (_hasWater)
+        {
+            if (_ActiveIcon != null)
+            {
+                _ActiveIcon.SetActive(true);
+            }
+
+            _textMeshPro.transform.parent.gameObject.SetActive(true);
+        }
+        else
+        {
+            if (_ActiveIcon != null)
+            {
+                _ActiveIcon.SetActive(false);
+            }
+            _textMeshPro.transform.parent.gameObject.SetActive(false);
+        }
+    }
+
     public bool CheckParentWaterInput()
     {
         if (_parentWaterInput == null)
@@ -159,16 +185,14 @@ public class WaterSource : MonoBehaviour
 
         if (_parentWaterInput.GetHasWater())
         {
-            _ActiveIcon.SetActive(true);
-
-            _textMeshPro.transform.parent.gameObject.SetActive(true);
+            _hasWater = true;
+            UpdateIconVisuals();
             return false;
         }
         else
         {
-            _ActiveIcon.SetActive(false);
-
-            _textMeshPro.transform.parent.gameObject.SetActive(false);
+            _hasWater = false;
+            UpdateIconVisuals();
             return true;
         }
     }

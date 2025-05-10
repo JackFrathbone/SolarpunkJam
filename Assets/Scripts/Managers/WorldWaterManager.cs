@@ -74,7 +74,7 @@ public class WorldWaterManager : MonoService
 
         foreach (WaterSource waterSource in _waterSources)
         {
-            if (waterSource.GetConnectedPipes().Count == 0 || !waterSource.GetIsPowered() || waterSource.CheckParentWaterInput())
+            if (!waterSource.GetIsPowered() || waterSource.CheckParentWaterInput())
             {
                 continue;
             }
