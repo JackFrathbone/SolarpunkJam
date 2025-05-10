@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
+  m_Name: Becky_Dialogue
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogueText: '[Amazing SA]
+
+      [Med student]
+
+      [Not about greening up
+      the place]
+
+      [Problematic statue]
+
+      [Cry the beloved Dassie]
+
+      [Green
+      setup here could you connect tot ap to share borehold with the rest]
+
+      [Give
+      parts for solar panel for clinic]'
+    isPlayer: 0
