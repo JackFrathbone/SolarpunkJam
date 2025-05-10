@@ -13,6 +13,8 @@ public class WaterSource : MonoBehaviour
 
     [SerializeField] private Color _textBoxIncorrectAmountColour;
 
+    [SerializeField] private AudioClip _activateAudioClip;
+
     [Header("References")]
     private List<WaterPipe> _connectedPipes = new();
     private TextMeshPro _textMeshPro;
@@ -26,6 +28,7 @@ public class WaterSource : MonoBehaviour
 
     private SpriteRenderer _textBackgroundRenderer;
 
+    private LazyService<GameManager> _gameManager;
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -194,6 +197,7 @@ public class WaterSource : MonoBehaviour
             return;
         }
 
+        bool previousState = _isPowered;
         //Go through all connected pumps, check their connected power sources, if one isnt powered up then turn off this water source
         bool poweredUp = true;
         bool nullCheck = false;
@@ -220,10 +224,20 @@ public class WaterSource : MonoBehaviour
 
         if (_isPowered)
         {
+            if (_isPowered != previousState)
+            {
+                _gameManager.Value.PlayAudioClip(_activateAudioClip, 0.85f, 1f);
+            }
+
             _textBackgroundRenderer.color = Color.white;
         }
         else
         {
+            if (_isPowered != previousState)
+            {
+                _gameManager.Value.PlayAudioClip(_activateAudioClip, 0.85f, 0.5f);
+            }
+
             _textBackgroundRenderer.color = _textBoxIncorrectAmountColour;
         }
     }

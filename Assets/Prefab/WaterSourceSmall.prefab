@@ -391,6 +391,7 @@ MonoBehaviour:
   _waterSourceAmount: 6
   _connectedPumps: []
   _textBoxIncorrectAmountColour: {r: 0.87058824, g: 0.20784314, b: 0.16470589, a: 1}
+  _activateAudioClip: {fileID: 8300000, guid: 8eb9add840f83fc4799de338e3b62c8a, type: 3}
   _ActiveIcon: {fileID: 0}
   _ArrowUpRight: {fileID: 1825444543521341038}
   _ArrowDownLeft: {fileID: 2130346794296232059}

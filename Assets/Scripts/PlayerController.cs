@@ -1,4 +1,6 @@
 using RenderHeads.Services;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -29,6 +31,8 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject _waterPipePrefab;
     [SerializeField] private GameObject _cablePrefab;
+
+    [SerializeField] private GameObject _pickupLabel;
 
     private GameObject _placementPreview;
 
@@ -71,6 +75,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _pickupLabel.SetActive(false);
+
         _gameManager.Value.playerController = this;
 
         _currentPipes = _startingPipes;
@@ -194,6 +200,7 @@ public class PlayerController : MonoBehaviour
             WaterPipePickup pickup = collision.GetComponent<WaterPipePickup>();
 
             _currentPipes += pickup.pipesToAdd;
+            StartCoroutine(ShowPickupNumber(pickup.pipesToAdd));
             UpdateUI();
 
             Destroy(pickup.gameObject);
@@ -203,6 +210,7 @@ public class PlayerController : MonoBehaviour
             PartsPickup pickup = collision.GetComponent<PartsPickup>();
 
             _currentParts += pickup.partsToAdd;
+            StartCoroutine(ShowPickupNumber(pickup.partsToAdd));
             UpdateUI();
 
             Destroy(pickup.gameObject);
@@ -212,6 +220,7 @@ public class PlayerController : MonoBehaviour
             CablePickup pickup = collision.GetComponent<CablePickup>();
 
             _currentCables += pickup.cableToAdd;
+            StartCoroutine(ShowPickupNumber(pickup.cableToAdd));
             UpdateUI();
 
             Destroy(pickup.gameObject);
@@ -372,5 +381,13 @@ public class PlayerController : MonoBehaviour
     public bool SwitchMode()
     {
         return _placingCables = !_placingCables;
+    }
+
+    IEnumerator ShowPickupNumber(int number)
+    {
+        _pickupLabel.SetActive(true);
+        _pickupLabel.GetComponentInChildren<TextMeshPro>().text = "+" + number.ToString() + "!";
+        yield return new WaitForSeconds(3f);
+        _pickupLabel.SetActive(false);
     }
 }

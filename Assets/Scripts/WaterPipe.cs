@@ -6,12 +6,15 @@ public class WaterPipe : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] LayerMask _layerMask;
+    [SerializeField] AudioClip _placeAudioClip;
+    [SerializeField] AudioClip _destroyAudioClip;
 
     [Header("References")]
     [SerializeField] List<Sprite> _pipeSprites = new();
     private SpriteRenderer _renderer;
     private Animator _animator;
 
+    private LazyService<GameManager> _gameManager;
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -47,6 +50,8 @@ public class WaterPipe : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         _defaultLayer = gameObject.layer;
+
+        _gameManager.Value.PlayAudioClip(_placeAudioClip, 0.25f, Random.Range(0.95f, 1.5f));
     }
 
     private void FixedUpdate()
@@ -57,6 +62,11 @@ public class WaterPipe : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (_gameManager.Value != null)
+        {
+            _gameManager.Value.PlayAudioClip(_destroyAudioClip, 0.25f, Random.Range(0.95f, 1.5f));
+        }
+
         _worldWaterManager.Value.RemoveWaterPipe(this);
     }
 

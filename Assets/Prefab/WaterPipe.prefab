@@ -50,6 +50,8 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 9
+  _placeAudioClip: {fileID: 8300000, guid: 51d676f925cc48340af1c89a33399aa3, type: 3}
+  _destroyAudioClip: {fileID: 8300000, guid: f7c1b5c561ad5d2489cb00af8ec42a39, type: 3}
   _pipeSprites:
   - {fileID: 21300000, guid: 08a7c289b2c48b544abb3a8ebec25b21, type: 3}
   - {fileID: 21300000, guid: 613dc27acf7af244bbcde1547ab2942c, type: 3}

@@ -19,6 +19,8 @@ public class WaterInput : MonoBehaviour
 
     [SerializeField] private Color _textBoxIncorrectAmountColour;
 
+    [SerializeField] private AudioClip _activateClip;
+
     [Header("References")]
     [SerializeField] private GameObject _activeIcon;
 
@@ -30,6 +32,7 @@ public class WaterInput : MonoBehaviour
     private TextMeshPro _textMeshPro;
     private SpriteRenderer _textBackgroundRenderer;
 
+    private LazyService<GameManager> _gameManager;
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -139,10 +142,15 @@ public class WaterInput : MonoBehaviour
 
     private void UpdateState(bool hasWater)
     {
+        bool previousWaterState = _hasWater;
         _hasWater = CheckHasWater();
 
         if (_hasWater)
         {
+            if(_hasWater != previousWaterState)
+            {
+                _gameManager.Value.PlayAudioClip(_activateClip, 1f, Random.Range(0.95f, 1.15f));
+            }
             _textBackgroundRenderer.color = Color.white;
             Activate();
         }
