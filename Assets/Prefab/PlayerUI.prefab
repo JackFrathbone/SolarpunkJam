@@ -1876,6 +1876,8 @@ MonoBehaviour:
   _modeButton: {fileID: 683555466365026972}
   _modePipesImg: {fileID: 21300000, guid: 4df0fbc42f8dcc749986ca4d675beb66, type: 3}
   _modeCablesImg: {fileID: 21300000, guid: ee1689d43860ce24f86aa6cc5893071d, type: 3}
+  _clickPopClip: {fileID: 8300000, guid: feafdb55b890088479915a49282226db, type: 3}
+  _switchBloopClip: {fileID: 8300000, guid: 711ecee69a2ebcb4495c1091a39c9567, type: 3}
 --- !u!223 &1268411594316829876
 Canvas:
   m_ObjectHideFlags: 0

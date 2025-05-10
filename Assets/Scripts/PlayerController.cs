@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Sprite _dialoguePotraitSprite;
 
+    [SerializeField] private AudioClip _pickupAudioClip;
+
     [Header("Inventory")]
     private int _currentCables;
     private int _currentPipes;
@@ -174,6 +176,7 @@ public class PlayerController : MonoBehaviour
                 case PlayerMouseState.character:
                     if (Input.GetButtonDown("Fire1") && _targetCharacterController != null)
                     {
+                        _gameManager.Value.PlayAudioClip(_pickupAudioClip, 0.8f, 0.5f);
                         _uiManager.Value.ActivateDialogue(_targetCharacterController.GetCurrentDialogue(), _targetCharacterController.GetCharacterName(), _targetCharacterController.GetCharacterSprite(), _dialoguePotraitSprite);
                     }
                     break;
@@ -204,6 +207,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ShowPickupNumber(pickup.pipesToAdd));
             UpdateUI();
 
+            _gameManager.Value.PlayAudioClip(_pickupAudioClip, 0.8f, Random.Range(1f, 1.25f));
+
             Destroy(pickup.gameObject);
         }
         else if (collision.CompareTag("PartsPickup"))
@@ -213,6 +218,8 @@ public class PlayerController : MonoBehaviour
             _currentParts += pickup.partsToAdd;
             StartCoroutine(ShowPickupNumber(pickup.partsToAdd));
             UpdateUI();
+
+            _gameManager.Value.PlayAudioClip(_pickupAudioClip, 0.8f, Random.Range(1f, 1.25f));
 
             Destroy(pickup.gameObject);
         }
@@ -224,6 +231,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ShowPickupNumber(pickup.cableToAdd));
             UpdateUI();
 
+            _gameManager.Value.PlayAudioClip(_pickupAudioClip, 0.8f, Random.Range(1f, 1.25f));
+
             Destroy(pickup.gameObject);
         }
         else if (collision.CompareTag("Tutorial"))
@@ -231,6 +240,9 @@ public class PlayerController : MonoBehaviour
             TutorialArrow tutorial = collision.GetComponent<TutorialArrow>();
 
             _uiManager.Value.ActivateDialogue(tutorial.GetTutorialDialogue(), "", null, _dialoguePotraitSprite);
+
+            _gameManager.Value.PlayAudioClip(_pickupAudioClip, 0.8f, Random.Range(1f, 1.25f));
+
             Destroy(collision.gameObject);
         }
     }

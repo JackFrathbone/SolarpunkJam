@@ -1,7 +1,6 @@
 using RenderHeads.Services;
 using TMPro;
 using UnityEngine;
-using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class UIManager : MonoService
@@ -32,6 +31,9 @@ public class UIManager : MonoService
     [SerializeField] private Button _modeButton;
     [SerializeField] private Sprite _modePipesImg;
     [SerializeField] private Sprite _modeCablesImg;
+
+    [SerializeField] private AudioClip _clickPopClip;
+    [SerializeField] private AudioClip _switchBloopClip;
 
     [Header("Data")]
     private DialogueObject _currentDialogueObject;
@@ -135,6 +137,9 @@ public class UIManager : MonoService
     public void NextDialogue()
     {
         _currentDialogueIndex++;
+
+        _gameManager.Value.PlayAudioClip(_clickPopClip, 0.9f, Random.Range(1.25f, 1.5f));
+
         if (SetDialogueText())
         {
             EndDialogue();
@@ -160,6 +165,8 @@ public class UIManager : MonoService
 
     public void SetPlacementModeVisuals(bool currentMode)
     {
+        _gameManager.Value.PlayAudioClip(_switchBloopClip, 1f, 1f);
+
         if (currentMode)
         {
             _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Cables";

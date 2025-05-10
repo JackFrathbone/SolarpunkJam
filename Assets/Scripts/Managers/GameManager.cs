@@ -6,7 +6,6 @@ public class GameManager : MonoService
     [Header("References")]
     public PlayerController playerController;
     public AudioSource universalAudioSource;
-
     private void Awake()
     {
         universalAudioSource = gameObject.AddComponent<AudioSource>();
