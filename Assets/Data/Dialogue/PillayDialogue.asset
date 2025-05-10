@@ -27,9 +27,9 @@ MonoBehaviour:
   - dialogueText: Ja, tough times make tough people, but helping each other out lightens
       the load through community.
     isPlayer: 1
-  - dialogueText: "Exactly! Our community-run FARM is now the true heart of Dusty
-      Dorp. We need water to flow from all areas of the town to the farm. \n\nAnd
-      we need a professional like you to help us get there!"
+  - dialogueText: Exactly! Our community-run FARM is now the true heart of Dusty
+      Dorp. We need water to flow from all areas of the town to the farm. And we
+      need a professional like YOU to help us get there!
     isPlayer: 0
   - dialogueText: Happy to help.
     isPlayer: 1
