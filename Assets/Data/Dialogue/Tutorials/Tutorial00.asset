@@ -13,13 +13,18 @@ MonoBehaviour:
   m_Name: Tutorial00
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: Whew that was a long trip! Once I've sorted out this towns water
-      they need to do something about that road, the bus was not happy
+  - dialogueText: "Sho! That was a long (and bumpy) trip hey.\r\nThis town looks
+      like it\u2019ll need a lot of work but I'm happy to come and help. \r\nOnce
+      I\u2019m done here, they'll need to help get these old Karoo Roads less bumpy!
+      \r"
     isPlayer: 1
-  - dialogueText: Now that I'm here, think my first step would be to find the mayor
-      or whatever they call the boss these days, get my bearings
+  - dialogueText: "Now, I think my first step would be to go and find THE MAYOR to
+      help get my bearings. Even a klein town like this can get an old dassie like
+      me overwhelmed!\r"
     isPlayer: 1
-  - dialogueText: I shouldn't forget what I learnt in the training program, especially
-      that I can walk using [WASD] and I can talk to people by clicking on their
-      heads... (always thought that seemed a bit rude though)
+  - dialogueText: "I mustn't forget my training. Now, how do I do things again..?\r"
+    isPlayer: 1
+  - dialogueText: "Ah ja. I must use [WASD] to WALK. And then I must use [LEFT MOUSE
+      CLICK] on people\u2019s heads to chat to them. (Though I always felt that was
+      a little bietjie rude though!)"
     isPlayer: 1
