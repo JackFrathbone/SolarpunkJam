@@ -13,16 +13,25 @@ MonoBehaviour:
   m_Name: BusukuDialogue_1
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Clinic needs water ut need to sort out rest of neighbourhood
-      first]
-
-      [Go to community centre]
-
-      [Stopped relying on US Aid]
-
-      [Indingouns
-      and western]'
-    isPlayer: 0
-  - dialogueText: "Molo Mister Handyman! Kunjani? (How are you)\r\n\rBoy, we are
+  - dialogueText: "Molo Mister Handyman! Kunjani? (How are you?)\r\n\rBoy, we are
       glad to see you."
+    isPlayer: 0
+  - dialogueText: Good to see you too.
+    isPlayer: 1
+  - dialogueText: "We're happy you've stopped by our little clinic. So, let me ask
+      you a question? When you have a cold what do reach for? Paracetamol\r\n or
+      garlic?"
+    isPlayer: 0
+  - dialogueText: I think I'd go fo-
+    isPlayer: 1
+  - dialogueText: 'My answer is why not BOTH! We like to mix things together here. '
+    isPlayer: 0
+  - dialogueText: 'My answer is why not BOTH! We like to mix things together here. '
+    isPlayer: 0
+  - dialogueText: But anyway, I digress. My clinic is running dry, patients need
+      WATER ya know! (Especially when they've been eating wild garlic!).
+    isPlayer: 0
+  - dialogueText: But, you can't help me yet. We need to get the MAIN WATER LINE
+      fixed! Go to the COMMUNITY CENTRE and speak to MARIANNE. She'll tell you all
+      you need to know!
     isPlayer: 0

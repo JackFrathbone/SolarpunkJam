@@ -20,3 +20,13 @@ MonoBehaviour:
       [Go
       to old couple on other side]'
     isPlayer: 0
+  - dialogueText: Wow! I'm so glad to have water, back, you did a good job Handyman!
+    isPlayer: 0
+  - dialogueText: 'Here''s some cable for your trouble (and more garlic too). '
+    isPlayer: 0
+  - dialogueText: Dankie!
+    isPlayer: 1
+  - dialogueText: Oh! Wait! Here's some more garlic! Please go give it to WENDY if
+      you see here, she was feeling unwell. Give her my regards. She's on the other
+      side of town near where BECKY lives.
+    isPlayer: 0

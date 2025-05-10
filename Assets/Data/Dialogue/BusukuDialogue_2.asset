@@ -20,3 +20,10 @@ MonoBehaviour:
       [Go
       see Becky for parts]'
     isPlayer: 0
+  - dialogueText: Ah! Well done on getting the WATER MAIN fixed! Have some wild garlic
+      for your troubles and these SPARE PIPES you can use!
+    isPlayer: 0
+  - dialogueText: BUT! You still can't hook up the clinic just yet. I need me a SOLAR
+      PANEL. Go chat to BECKY, she lives on the other side of town.  She'll have
+      PARTS for you! (Be warned she can be a lil' chatty)
+    isPlayer: 0
