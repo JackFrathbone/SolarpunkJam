@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Becky_Dialogue2
   m_EditorClassIdentifier: 
   dialogues:
+  - dialogueText: Thanks <3 Here are those parts Dr. Busuku needs!
+    isPlayer: 0
   - dialogueText: 'Thank you for helping out Dusty Dorp Becky! You really seem to
       care about this town. '
     isPlayer: 1

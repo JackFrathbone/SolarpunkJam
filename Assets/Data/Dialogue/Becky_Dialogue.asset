@@ -13,22 +13,6 @@ MonoBehaviour:
   m_Name: Becky_Dialogue
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Amazing SA]
-
-      [Med student]
-
-      [Not about greening up
-      the place]
-
-      [Problematic statue]
-
-      [Cry the beloved Dassie]
-
-      [Green
-      setup here could you connect tot ap to share borehold with the rest]
-
-'
-    isPlayer: 0
   - dialogueText: 'Hiiiii! I''m BECKY! Nice to meeeeet youuuu! I''m from America
       and I''m totally exicted you''re here! <3 '
     isPlayer: 0
@@ -36,7 +20,7 @@ MonoBehaviour:
       getting PARTS? '
     isPlayer: 1
   - dialogueText: YESSSSS! I'm studying to be a doctor like Dr Busuku. I love his
-      vibe! <3 and I LOVE your coutry!!
+      vibe! <3 and I LOVE your country!!
     isPlayer: 0
   - dialogueText: I'm learning sooooo much about your history. Idk about the statue
       at the Town Hall, it seems like Jan Van Reebok's past was kinda complicated...
@@ -53,11 +37,13 @@ MonoBehaviour:
       and I wanna help the whole town get eco-friendly too!
     isPlayer: 0
   - dialogueText: But like, that doesn't mean just turning everything green!  We
-      need deserts like the Karoo, not everywhere should look like Yosemite forrest.
-      Being here made me realize that! Ca't just throw in more trees everywhere and
-      call it a day!
+      need semi-desert like the Karoo, not everywhere should look like Yosemite forrest.
+      Being here made me realize that! Can't just throw in more trees everywhere
+      and call it a day!
     isPlayer: 0
-  - dialogueText: So like, you can go ahead and dismantle my solar panel for PARTS
-      to help get the clinic that renewable energy! We're all in this together ya
-      know <3
+  - dialogueText: As you can see I already have a perfect eco-setup up at my place,
+      but please can you hook up my water to the tap down the road! It's the least
+      I can do and you'll need it for later. <3
+    isPlayer: 0
+  - dialogueText: I'll give you your PARTS once you've done that!
     isPlayer: 0

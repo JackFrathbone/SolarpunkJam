@@ -13,18 +13,6 @@ MonoBehaviour:
   m_Name: MarianneDialogue_1
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Community centre, bascially running the community here]
-
-      [Veg
-      garden]
-
-      [Give you pipes and cables]
-
-      [Talk to gardener for stuff]
-
-      [Znhle
-      playground]'
-    isPlayer: 0
   - dialogueText: 'Hallo  Mr Handyman! Welcome to our COMMUNITY CENTRE. '
     isPlayer: 0
   - dialogueText: 'It''s very lovely mevrou. '
@@ -40,6 +28,6 @@ MonoBehaviour:
       actually grow some yummy lekker veg.
     isPlayer: 0
   - dialogueText: Please go chat to GANIEF. He's got a natural green thumb (or should
-      I say hoof!). He has some CABLES and PIPES give to us from another town over
+      I say hoof!). He has some CABLES and PIPES given to us from another town over
       to help get that water flowing!
     isPlayer: 0

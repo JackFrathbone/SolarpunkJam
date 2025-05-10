@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Marianne_Dialogue2
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[GIVE PARTS]'
-    isPlayer: 0
   - dialogueText: Dustin! Thank you so so much! With our veggies growing and glowing
       we can help even more people. Dusty Dorp is coming together!
     isPlayer: 0
   - dialogueText: Now here's some parts to help JON. You can help him setup the new
-      SOLAR PANELS on the poorer side of town.
+      SOLAR PANELS on what was the poorer side of town. Though with our work it's
+      already looking almost as pretty as the fancy side!
     isPlayer: 0

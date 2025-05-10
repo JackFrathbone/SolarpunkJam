@@ -13,14 +13,6 @@ MonoBehaviour:
   m_Name: ZinhleDialogue
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Talks about central water storage] +
-
-      [The need to hook
-      it uop to sustainable electricity source] +
-
-      [Exciting to see town coming
-      together and sustainable for adult life]'
-    isPlayer: 0
   - dialogueText: HIIIIIII! I'm ZINHLE, nice to meet you! Are you the "hammy man"
       my mommy told me about? Are you going to bring water back to the town? I want
       the ducks and frogs to come play with me again!

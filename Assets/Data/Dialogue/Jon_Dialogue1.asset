@@ -13,18 +13,6 @@ MonoBehaviour:
   m_Name: Jon_Dialogue1
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Here''s the hood]
-
-      [Tuotrial stuff]
-
-      [Tap will lead
-      to town square and hook to main water source]
-
-      [Sharing alot already
-      on the poor side]
-
-      [Great seeing everyone do their share]'
-    isPlayer: 0
   - dialogueText: 'So, the handyman has come to the dustier side of Dusty Dorp? We''ll
       that''s good to see you''ll be helping ALL  of the town. '
     isPlayer: 0
@@ -38,8 +26,11 @@ MonoBehaviour:
       school but sometimes it takes a proper kick up the butt like day zero for those
       lessons to kick in! '
     isPlayer: 1
-  - dialogueText: Hehe you're a wise dassie.  Okay then [TUTORIAL STUFF]
+  - dialogueText: Hehe you're a wise dassie.  Hopefully wise enough to sort out our
+      side, we need a solar panel and you to hookup the community centres water.
+      That will feed back past our houses to the town square!
     isPlayer: 0
-  - dialogueText: Now that you know what's up once you're done, hook stuff up to
-      the town.
+  - dialogueText: Just remember that sometimes you may want to keep water lines seperate
+      to get the perfect pressure, can't have too much going into our houses with
+      these old pipes we have!
     isPlayer: 0

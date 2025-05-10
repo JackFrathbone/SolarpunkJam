@@ -13,13 +13,6 @@ MonoBehaviour:
   m_Name: Ganief_Dialogue1
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Cables and pipes we''ve stored together]
-
-      [Comig together
-      + need your help]
-
-      [Done go to other side of the road to jon]'
-    isPlayer: 0
   - dialogueText: Hello Mister. Name's GANIEF, the local BOTANIST. So you're going
       to help get us get our local little garden up and running ey?
     isPlayer: 0
@@ -34,8 +27,6 @@ MonoBehaviour:
       the time. It's be so nice to see everyone come  to eat a homegrown meal we've
       prepared together.
     isPlayer: 0
-  - dialogueText: Jon's been a real blessing making meals for [HELP-
-    isPlayer: 0
   - dialogueText: Now then, here's some cables and pipes. Let's get that water flowing
-      and our veggies growing!
+      and our veggies growing! Once you've hooked us up chat again to MARIANNE!
     isPlayer: 0
