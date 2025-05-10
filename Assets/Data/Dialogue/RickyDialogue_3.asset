@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: RickyDialogue_3
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Good job finishing game and go chat to the mayor]
-
-'
+  - dialogueText: "What a beautiful sight. All of the town's water and people have
+      come together for a common cause! Thank you for helping us, setting us up was
+      EEZZ wasn't it?\r"
+    isPlayer: 0
+  - dialogueText: "\rEEZE peasy!\r\n"
+    isPlayer: 1
+  - dialogueText: "Now before you mosey on outta here, onto your next adventure in
+      helping out other communites like our, I think you gotta go speak to the MAYOR
+      one last time. \r"
     isPlayer: 0

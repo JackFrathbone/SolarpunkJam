@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: RickyDialgoue_2
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Have some cables and pipes to finsih farm]
-
-      [Scrap a solar
-      panel from rich people]'
+  - dialogueText: I knew you were the right dassie to call for the job! Amazing work!
+      Now we're almost done, you just need to hook up the FARM.
+    isPlayer: 0
+  - dialogueText: 'Here have some more CABLES AND PIPES to help finish the job. Also,
+      if you need PARTS for the FINAL SOLAR PANEL, don''t forget to scrap some from
+      the fancier side of town. '
     isPlayer: 0

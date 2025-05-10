@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: RickyDialogue_1
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Community farm will need more than central water storage can
-      provide so you''ll need to bring water to both sides of the town and connect
-      them back here]
-
-
-      [Funny and grumpy]'
+  - dialogueText: Hallo! I'm RICKY and I'm the HEAD FARMER here in Dusty Dorp. I
+      was the one who sent for you. I heard you believe in the movement we stand
+      for. Do you like our flag in the town hall?
+    isPlayer: 0
+  - dialogueText: Yes! It reminds me of the back when I first started helping out
+      communities like yours. So I know my END GOAL is to get water back to this
+      FARM, but where should I START?
+    isPlayer: 1
+  - dialogueText: Go and chat to my sister MARIANNE at the COMMUNITY CENTRE on your
+      left. Once you've helped both sides of town, come back here to help me finish
+      off the FARM.
     isPlayer: 0
