@@ -41,7 +41,7 @@ public class Cable : MonoBehaviour
     {
         _worldWaterManager.Value.AddCable(this);
 
-        _renderer = GetComponent<SpriteRenderer>();
+        _renderer = GetComponentInChildren<SpriteRenderer>();
         _renderer.sprite = _pipeSprites[10];
 
         _particleSystem = GetComponentInChildren<ParticleSystem>();
