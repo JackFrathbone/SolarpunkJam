@@ -33,11 +33,12 @@ public class PlayerController : MonoBehaviour
     private GameObject _placementPreview;
 
     private Rigidbody2D _rigidbody;
-    private SpriteRenderer _spriteRenderer;
 
     private Tilemap _tileMap;
 
     private ParticleSystem _footParticles;
+
+    private Animator _animator;
 
     private LazyService<GameManager> _gameManager;
     private LazyService<WorldWaterManager> _worldWaterManager;
@@ -48,7 +49,6 @@ public class PlayerController : MonoBehaviour
 
     private PlayerMouseState _mouseState = PlayerMouseState.none;
 
-    private bool _facingLeft = false;
     private bool _freezeInput = false;
 
     //For movement
@@ -83,9 +83,10 @@ public class PlayerController : MonoBehaviour
         _placementPreview.SetActive(false);
 
         _rigidbody = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _footParticles = GetComponentInChildren<ParticleSystem>();
         _footParticles.Stop();
+
+        _animator = GetComponentInChildren<Animator>();
 
         _tileMap = FindObjectOfType<Tilemap>();
     }
@@ -102,12 +103,14 @@ public class PlayerController : MonoBehaviour
             _horizontalInput = Input.GetAxis("Horizontal");
             _verticalInput = Input.GetAxis("Vertical");
 
-            if(_horizontalInput != 0 || _verticalInput != 0)
+            if (_horizontalInput != 0 || _verticalInput != 0)
             {
+                _animator.SetBool("IsWalking", true);
                 _footParticles.Play();
             }
             else
             {
+                _animator.SetBool("IsWalking", false);
                 _footParticles.Stop();
             }
 
@@ -168,6 +171,10 @@ public class PlayerController : MonoBehaviour
                     }
                     break;
             }
+        }
+        else
+        {
+            _animator.SetBool("IsWalking", false);
         }
     }
 
@@ -231,11 +238,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_mouseWorldPosition.x > transform.position.x)
         {
-            _spriteRenderer.flipX = true;
+            _animator.transform.localScale = new Vector3(-0.4f, _animator.transform.localScale.y, _animator.transform.localScale.z);
         }
         else if (_mouseWorldPosition.x < transform.position.x)
         {
-            _spriteRenderer.flipX = false;
+            _animator.transform.localScale = new Vector3(0.4f, _animator.transform.localScale.y, _animator.transform.localScale.z);
         }
         else
         {
