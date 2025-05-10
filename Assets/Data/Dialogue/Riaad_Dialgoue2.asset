@@ -13,18 +13,10 @@ MonoBehaviour:
   m_Name: Riaad_Dialgoue2
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Go back to town square]
-
-      [Hook everything up to the farm]'
+  - dialogueText: Thanks for helping us make our town a better place. It puts a smile
+      on this old timers face!
     isPlayer: 0
-  - dialogueText: Greetings! Are you the handyman?
+  - dialogueText: Now, it's time for you to head back to RICKY at the farm. He was
+      the once who helped inspire us to go for this "Solarpunk" thing, and it looks
+      like it's made the difference we needed here!
     isPlayer: 0
-  - dialogueText: Ja, I am!
-    isPlayer: 1
-  - dialogueText: 'Fantastic! So, you see that INPUT TAP behind our houses? '
-    isPlayer: 0
-  - dialogueText: Ja?
-    isPlayer: 1
-  - dialogueText: You need to make sure that's connected up, that TAP will bring
-      water back to the town square for the FARM!
-    isPlayer: 1

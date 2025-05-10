@@ -18,3 +18,15 @@ MonoBehaviour:
       [Feel
       free to take the stuff from exisitng setup]'
     isPlayer: 0
+  - dialogueText: Howdy! Name's Izak and I run the Bowl's Club. (But I also inherited
+      the country club from my dad).
+    isPlayer: 0
+  - dialogueText: 'It breaks my heart to see these lawns go dry but please feel free
+      to TAKE any of the WATER EQUIPMENT used to water the lawns and make them go
+      to a better cause. '
+    isPlayer: 0
+  - dialogueText: Make sure to grab the SOLAR PANEL as I think that might be useful
+      to power the BIG WATER TANK in the TOWN SQUARE.
+    isPlayer: 0
+  - dialogueText: I'm off to get a beer, good luck!
+    isPlayer: 0
