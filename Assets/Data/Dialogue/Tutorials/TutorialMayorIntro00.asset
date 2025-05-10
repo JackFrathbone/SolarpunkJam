@@ -13,37 +13,32 @@ MonoBehaviour:
   m_Name: TutorialMayorIntro00
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: Hallo! You must be the plumber we've been waiting for!
+  - dialogueText: "Hello, you must be the handyman we sent for! Welcome to DUSTY
+      DORP, the bestest place in all of the Karoo! I\u2019m Mayor Smith-Mabala. \r"
     isPlayer: 0
-  - dialogueText: Hello, it's actually a "renewable infrastructure engineer" but
-      plumber has a friendlier tone haha. I'm [character name]
+  - dialogueText: "Hi! I\u2019m Dustin, it\u2019s so good to meet you! But one klein
+      correction, the proper term is  \u201CRENEWABLE INFRASTRUCTURE ENGINEER\u201D.
+      I know it can be a mouthful but it fits the job description."
     isPlayer: 1
-  - dialogueText: Pleased to meet you Mr Engineer, I am the mayor here, though it's
-      alot less formal than it sounds, I mostly help people get along in town so
-      we can get stuff done
+  - dialogueText: "Pleased to meet you Mr Engineer! Here at DUSTY DORP we have become
+      proper\u2026 -ah what do the kids call it? \u201CSun Rebels\u201D? \r"
     isPlayer: 0
-  - dialogueText: We are all so excited to have you here, the drought was not kind
-      to us and we had one too many fights over boreholes and lawns, aside from our
-      crops being ruined
+  - dialogueText: "Ah! You\u2019re thinking of \u201CSOLAR PUNK\u201D. But us trained
+      professionals use the term\u201CECO-EQUITY AND ZELF-ZUFFICIENCY\u201D. Or \u201CEEZZ\u201D
+      for short.\nI'm here to help kick of the process of helping make your town
+      even better!\r"
     isPlayer: 0
-  - dialogueText: And we all realised how badly everything here was setup before,
-      we know we have enough but it's not built for sharing. When we heard about
-      the programme we knew we needed to apply
+  - dialogueText: "We\u2019ve heard the process can definitely be \u201CEEZZ peasy\u201D
+      when we get proper help like you!"
     isPlayer: 0
-  - dialogueText: I'm looking foward to getting started, though there has been some
-      mixup and none of my supplies semmed to have gotten here ahead of me, so looks
-      like I'll be making do in the meanwhile
+  - dialogueText: "Exactly! I\u2019m baie excited to help get you guys running too.
+      So where can I get started?\r"
     isPlayer: 1
-  - dialogueText: Where would you like me to start?
-    isPlayer: 1
-  - dialogueText: Yes! Just to see what you can do, you see that our ponds here by
-      the town hall are dry. We have rain tanks for them and a borehold, but it was
-      never setup to use that system, so when the municipal water ran dry they did
-      too
+  - dialogueText: "You can see that our ponds by our little town hall here are dry.
+      We have the rain tanks and a borehole but not a system to connect them together.
+      So when the municipal water ran dry, so did these ponds. \r"
     isPlayer: 0
-  - dialogueText: So if you just head down, I'll move away the cones for you and
-      you can get started. Once you;ve done that I can point you towards the places
-      in town that need your help
+  - dialogueText: "I'll move away the cones for you so you can get started. Once
+      you\u2019ve done that, I can point you towards the places in town that need
+      your help. Good luck!\r"
     isPlayer: 0
-  - dialogueText: Great, let me get right to it!
-    isPlayer: 1

@@ -13,9 +13,20 @@ MonoBehaviour:
   m_Name: Tutorial01
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: Okay, so I can place water pipes by clicking with the left mouse
-      on a empty spot, and I can remove placed pipes by right clicking on them
+  - dialogueText: I need to grab some water pipes first, there are some in that BOX
+      in front of me.
     isPlayer: 1
-  - dialogueText: And to fill up that pond I just need to connect that water tank
-      to the tap with the pipes, should have enough on me to do that
+  - dialogueText: 'Okay, so by using [LEFT MOUSE CLICK] on an  EMPTY TILE  I can
+      place a water pipe.
+
+      
+
+      And using [RIGHT MOUSE CLICK] I can remove
+      placed pipes.
+
+'
+    isPlayer: 1
+  - dialogueText: "And to fill up the Town Hall\u2019s ponds, I just need to connect
+      that WATER TANK to the TAPS with the PIPES. I think I have enough pipes on
+      me to do that."
     isPlayer: 1

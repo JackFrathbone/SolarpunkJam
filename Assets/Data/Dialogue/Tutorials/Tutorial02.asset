@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Tutorial02
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: Okay yeah, I got the hang of this still. Now time to do some wiring
+  - dialogueText: "Lekker! I\u2019ve still got the hang of this. Now to do some SOLAR
+      SETUP!"
     isPlayer: 1
-  - dialogueText: Firstly, I see there are some spare parts over there in that toolbox.
-      I can use that to build up a solarpanel on the old wiring box
+  - dialogueText: "I see there are some spare PARTS in that TOOLBOX over there. I
+      can use PARTS to replace the old electrical box with these newly designed SOLAR
+      PANELS.\r"
     isPlayer: 1
-  - dialogueText: I do that just by clickin on it, and if I have the parts they get
-      added. Once it has enough parts it will get built and start working
+  - dialogueText: "To replace the old with the eco-new, I just have to LEFT CLICK]on
+      the ELECTRIC POLE to keep adding PARTS until it has enough to g]et built.\r"
     isPlayer: 1
-  - dialogueText: I can remove parts from a existing panel by right clicking, in
-      case I don't need it anymore
+  - dialogueText: And I simply RIGHT CLICK to [REMOVE PARTS] if I need to remove
+      any SOLAR PANELS.
     isPlayer: 1

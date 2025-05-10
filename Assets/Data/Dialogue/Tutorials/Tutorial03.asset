@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Tutorial03
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: So this blue output tap is connected to the input tap that we just
-      hooked up. This allows water to travel further or be split up
+  - dialogueText: So this BLUE OUTPUT TAP  is connected to the RED INPUT TAP that
+      we just hooked up. This allows the water to travel further or be split up.
     isPlayer: 1
-  - dialogueText: You can see by the water icon that it is connected and has water
-      currently
+  - dialogueText: "The WATER ICON shows the TAP is CONNECTED and the water is FLOWING.\r"
     isPlayer: 1
-  - dialogueText: The ponds here need 12 water, but this tap and the other nearby
-      tank only have six each, so I need to route both of them to the input tap for
-      the pond
+  - dialogueText: The ponds here need 12 WATER, but this TAP and the other nearby
+      TANK only have 6 each, so I need to route both of them to the INPUT TAP for
+      the pond to get water.
     isPlayer: 1

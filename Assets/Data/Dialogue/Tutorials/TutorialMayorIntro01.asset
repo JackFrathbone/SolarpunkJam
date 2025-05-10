@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: TutorialMayorIntro01
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: Wow! That makes me so happy to see, hopefully now those ducks will
-      come back to visit us
+  - dialogueText: Seeing the pond full again brings tear to my eye. My kids and I
+      are going to come and feed the ducks again!
     isPlayer: 0
-  - dialogueText: So you are the real deal, you know always have to check when it
-      comes to government people
-    isPlayer: 0
-  - dialogueText: I get that haha, no problem
+  - dialogueText: Definitely much more welcoming. But this is only the start!
     isPlayer: 1
-  - dialogueText: But you can do us alot of good, I think we are ready to share and
-      rebuild this town, but sometimes having a stranger come and push us can really
-      make a difference
+  - dialogueText: Yebo! I think we are ready to rebuild this town. We have started
+      on our own but with your help our combined collective knowledge, we can finish
+      the job TOGETHER!
+    isPlayer: 0
+  - dialogueText: You should chat to our local PRIEST next. He can give you some
+      more insight on what needs to be done in Dusty Dorp. Good luck, Mr Engineer!
+      You've got us rooting for you.
     isPlayer: 0

@@ -13,17 +13,26 @@ MonoBehaviour:
   m_Name: Tutorial04
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: Okay, looks like I need to do some wiring here. The water tank
-      here is connected but it doesnt have power to its attached pump on th left
+  - dialogueText: Looks like I need to do more WIRING here. The WATER TANK is CONNECTED
+      but has NO POWER attached to its PUMP.
     isPlayer: 1
-  - dialogueText: I need to grab the cables in that box here, then switch into cable
-      placing mode using [Q] or clicking the toggle on my hud. Then I can place cables
-      just like water pipes, by left and right clicking!
+  - dialogueText: 'I need to grab the CABLES from that box over there.
+
+      I
+      can SWITCH to CABLE MODE by PRESSING Q or TOGGLING that little BUTTON in my
+      HUD.
+
+'
     isPlayer: 1
-  - dialogueText: Normally you cant cross cables and water pipes, so you need a junction
-      box like the one on this set of pipes, I just need to connect a cable to either
-      end
+  - dialogueText: 'Then I can  ADD and REMOVE CABLES by LEFT AND RIGHT CLICKING.
+
+      Just
+      like the pipes,  this is "EEZZ peasy"!'
     isPlayer: 1
-  - dialogueText: Now once the pump is powered water will start flowing from this
-      tank into the connected input tap!
+  - dialogueText: "I  can\u2019t cross CABLES AND WIRES unless I  have a JUNCTION
+      BOX like the one in front of me.\n\r\nI just need to connect a CABLE to either
+      end of the JUNCTION BOX. \r"
+    isPlayer: 1
+  - dialogueText: "When the PUMP HAS POWER, water will flow from the TANK to the
+      CONNECTED INPUT TAP!\r"
     isPlayer: 1
