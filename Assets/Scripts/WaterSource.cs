@@ -17,6 +17,11 @@ public class WaterSource : MonoBehaviour
 
     [SerializeField] GameObject _ActiveIcon;
 
+    [SerializeField] private GameObject _ArrowUpRight;
+    [SerializeField] private GameObject _ArrowDownLeft;
+    [SerializeField] private GameObject _ArrowUpLeft;
+    [SerializeField] private GameObject _ArrowDownRight;
+
     private LazyService<WorldWaterManager> _worldWaterManager;
 
     [Header("Data")]
@@ -69,30 +74,55 @@ public class WaterSource : MonoBehaviour
         gameObject.layer = 2;
 
         _hit = Physics2D.Raycast(transform.position, _isometricUpRight, 0.5f);
-        CheckHit();
+        CheckHit(0);
 
         _hit = Physics2D.Raycast(transform.position, _isometricDownLeft, 0.5f);
-        CheckHit();
+        CheckHit(1);
 
         _hit = Physics2D.Raycast(transform.position, _isometricUpLeft, 0.5f);
-        CheckHit();
+        CheckHit(2);
 
         _hit = Physics2D.Raycast(transform.position, _isometricDownRight, 0.5f);
-        CheckHit();
+        CheckHit(3);
 
         gameObject.layer = 0;
     }
 
-    private void CheckHit()
+    private void CheckHit(int direction)
     {
         if (_hit.collider == null)
         {
+            SetDirectionArrow(direction, true);
             return;
         }
 
         if (_hit.collider.CompareTag("Pipe"))
         {
+            SetDirectionArrow(direction, false);
             _connectedPipes.Add(_hit.collider.GetComponent<WaterPipe>());
+        }
+        else
+        {
+            SetDirectionArrow(direction, false);
+        }
+    }
+
+    private void SetDirectionArrow(int direction, bool setActive)
+    {
+        switch (direction)
+        {
+            case 0:
+                _ArrowUpRight.SetActive(setActive);
+                break;
+            case 1:
+                _ArrowDownLeft.SetActive(setActive);
+                break;
+            case 2:
+                _ArrowUpLeft.SetActive(setActive);
+                break;
+            case 3:
+                _ArrowDownRight.SetActive(setActive);
+                break;
         }
     }
 
