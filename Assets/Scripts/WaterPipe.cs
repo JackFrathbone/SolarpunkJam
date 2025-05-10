@@ -26,6 +26,8 @@ public class WaterPipe : MonoBehaviour
     private List<WaterInput> _connectedWaterInputs = new();
     private List<WaterPipe> _connectedPipes = new();
 
+    private List<WaterPipe> _newConnectedPipes = new();
+
     //For keeping track of directions to raycast
     private readonly Vector2 _isometricUpRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 30f), Mathf.Sin(Mathf.Deg2Rad * 30f)).normalized;
     private readonly Vector2 _isometricDownLeft = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 210f), Mathf.Sin(Mathf.Deg2Rad * 210f)).normalized;
@@ -73,7 +75,7 @@ public class WaterPipe : MonoBehaviour
     private void CheckForConnections()
     {
         _connectedWaterInputs.Clear();
-        _connectedPipes.Clear();
+        _newConnectedPipes.Clear();
 
         gameObject.layer = 2;
 
@@ -90,6 +92,16 @@ public class WaterPipe : MonoBehaviour
         CheckHit(3);
 
         gameObject.layer = _defaultLayer;
+
+        // Discard old pipes that aren't connected anymore
+        for (int i = _connectedPipes.Count - 1; i >= 0; i--)
+        {
+            WaterPipe pipe = _connectedPipes[i];
+            if (!_newConnectedPipes.Contains(pipe))
+            {
+                _connectedPipes.RemoveAt(i); // Remove by index
+            }
+        }
     }
 
     private void CheckHit(int direction)
@@ -118,7 +130,15 @@ public class WaterPipe : MonoBehaviour
         bool connected = false;
         if (_hit.collider.CompareTag("Pipe"))
         {
-            _connectedPipes.Add(_hit.collider.GetComponent<WaterPipe>());
+            WaterPipe pipe = _hit.collider.GetComponent<WaterPipe>();
+
+            _newConnectedPipes.Add(pipe);
+
+            if (!_connectedPipes.Contains(pipe))
+            {
+                _connectedPipes.Add(pipe);
+            }
+
             connected = true;
         }
         else if (_hit.collider.CompareTag("WaterInput"))
@@ -132,6 +152,18 @@ public class WaterPipe : MonoBehaviour
         }
         else if (_hit.collider.CompareTag("JunctionBox"))
         {
+            WaterPipe pipe = _hit.collider.GetComponent<JunctionBox>().GetConnectedWaterPipe(this);
+
+            if (pipe != null)
+            {
+                _newConnectedPipes.Add(pipe);
+
+                if (!_connectedPipes.Contains(pipe))
+                {
+                    _connectedPipes.Add(pipe);
+                }
+            }
+
             connected = true;
         }
 
@@ -264,7 +296,10 @@ public class WaterPipe : MonoBehaviour
 
     public void AddPipe(WaterPipe waterPipe)
     {
-        _connectedPipes.Add(waterPipe);
+        if (!_connectedPipes.Contains(waterPipe))
+        {
+            _connectedPipes.Add(waterPipe);
+        }
     }
 
     public List<WaterPipe> GetattachedPipes()
