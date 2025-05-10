@@ -15,5 +15,8 @@ MonoBehaviour:
   dialogues:
   - dialogueText: '[Thanks for hooking stuff up yay!]
 
-      [Gives cables]'
+      [Gives cables]
+
+      [Go
+      to old couple on other side]'
     isPlayer: 0

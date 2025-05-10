@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
-  m_Name: DoctorGreeting
+  m_Name: Becky_Dialogue2
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: Hello! Nice to meet you man
+  - dialogueText: '[Gives parts for clinic]
+
+
+'
     isPlayer: 0
-  - dialogueText: The pleasure is mine doc!
-    isPlayer: 1

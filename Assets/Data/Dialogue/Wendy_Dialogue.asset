@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
   m_Name: Wendy_Dialogue
   m_EditorClassIdentifier: 
-  dialogues: []
+  dialogues:
+  - dialogueText: '[Wnedy gone trhough alot but this feel better]
+
+      [Fight so
+      much in the old days]
+
+      [No eco back in day]'
+    isPlayer: 0

@@ -27,7 +27,7 @@ MonoBehaviour:
       professionals use the term\u201CECO-EQUITY AND ZELF-ZUFFICIENCY\u201D. Or \u201CEEZZ\u201D
       for short.\nI'm here to help kick of the process of helping make your town
       even better!\r"
-    isPlayer: 0
+    isPlayer: 1
   - dialogueText: "We\u2019ve heard the process can definitely be \u201CEEZZ peasy\u201D
       when we get proper help like you!"
     isPlayer: 0

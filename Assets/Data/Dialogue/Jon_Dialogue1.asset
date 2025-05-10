@@ -15,11 +15,13 @@ MonoBehaviour:
   dialogues:
   - dialogueText: '[Here''s the hood]
 
-      [Tap will lead to town square and hook
-      to main water source]
+      [Tuotrial stuff]
 
-      [Sharing alot already on the poor side]
+      [Tap will lead
+      to town square and hook to main water source]
 
-      [Great
-      seeing everyone do their share]'
+      [Sharing alot already
+      on the poor side]
+
+      [Great seeing everyone do their share]'
     isPlayer: 0

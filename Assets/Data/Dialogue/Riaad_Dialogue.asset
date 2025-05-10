@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
   m_Name: Riaad_Dialogue
   m_EditorClassIdentifier: 
-  dialogues: []
+  dialogues:
+  - dialogueText: '[Hallo] [We need you to connect this tap to go to the town square]
+
+      [Old
+      days]
+
+'
+    isPlayer: 0

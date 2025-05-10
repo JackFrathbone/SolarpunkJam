@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
-  m_Name: RickyDialogue_2
+  m_Name: RickyDialgoue_2
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: Now you've hooked up both sides of town need to help the farm by
-      bringing all the water together]
+  - dialogueText: '[Have some cables and pipes to finsih farm]
+
+      [Scrap a solar
+      panel from rich people]'
     isPlayer: 0

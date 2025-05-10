@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8002fa9d24182d44cbffa62d50d355cf, type: 3}
   m_Name: Izak_Dialogue
   m_EditorClassIdentifier: 
-  dialogues: []
+  dialogues:
+  - dialogueText: '[Bowls lawn gotta go but happy to help the farm and community]
+
+      [Feel
+      free to take the stuff from exisitng setup]'
+    isPlayer: 0
