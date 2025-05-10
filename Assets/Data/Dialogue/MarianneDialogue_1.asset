@@ -25,3 +25,17 @@ MonoBehaviour:
       [Znhle
       playground]'
     isPlayer: 0
+  - dialogueText: 'Hallo  Mr Handyman! Welcome to our COMMUNITY CENTRE. '
+    isPlayer: 0
+  - dialogueText: 'It''s very lovely mevrou. '
+    isPlayer: 1
+  - dialogueText: Don't be like that! Call me MARIANNE., I'm not a tannie just yet!
+    isPlayer: 0
+  - dialogueText: Ja, okay Marianne, what can ek do for you today?
+    isPlayer: 1
+  - dialogueText: We have setup a nice VEGETABLE GARDEN but we need IRRIGATION to
+      actually grow some yummy lekker veg.
+    isPlayer: 1
+  - dialogueText: Please go chat to GANIEF. He's got a natural green thumb (or should
+      I say hoof!). He has some CABLES and PIPES to help get that water flowing!
+    isPlayer: 1
