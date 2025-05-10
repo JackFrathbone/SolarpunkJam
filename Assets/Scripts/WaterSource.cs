@@ -39,7 +39,7 @@ public class WaterSource : MonoBehaviour
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
         _textMeshPro.text = _waterSourceAmount.ToString();
 
-        if(_parentWaterInput != null)
+        if (_parentWaterInput != null)
         {
             _ActiveIcon.SetActive(false);
         }
@@ -52,18 +52,20 @@ public class WaterSource : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (CheckParentWaterInput())
-        {
-            return;
-        }
+        /*       if (CheckParentWaterInput())
+               {
+                   return;
+               }
+
+               CheckPowered();
+
+               if (!_isPowered)
+               {
+                   return;
+               }*/
+
 
         CheckPowered();
-
-        if (!_isPowered)
-        {
-            return;
-        }
-
         CheckForConnections();
     }
 
@@ -99,7 +101,11 @@ public class WaterSource : MonoBehaviour
         if (_hit.collider.CompareTag("Pipe"))
         {
             SetDirectionArrow(direction, false);
-            _connectedPipes.Add(_hit.collider.GetComponent<WaterPipe>());
+
+            if (_isPowered)
+            {
+                _connectedPipes.Add(_hit.collider.GetComponent<WaterPipe>());
+            }
         }
         else
         {
