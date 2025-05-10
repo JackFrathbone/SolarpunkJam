@@ -141,7 +141,7 @@ public class WorldWaterManager : MonoService
 
         foreach (PowerSource powerSource in _powerSources)
         {
-            if (powerSource.GetConnectedCables().Count == 0)
+            if (powerSource.GetConnectedCables().Count == 0 || !powerSource.GetIsActive())
             {
                 continue;
             }
