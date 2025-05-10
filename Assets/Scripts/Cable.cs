@@ -26,6 +26,7 @@ public class Cable : MonoBehaviour
 
     private List<WaterSourcePump> _connectedPumps = new();
     private List<Cable> _connectedCables = new();
+    private List<Cable> _newConnectedCables = new();
 
     //For keeping track of directions to raycast
     private readonly Vector2 _isometricUpRight = new Vector2(Mathf.Cos(Mathf.Deg2Rad * 30f), Mathf.Sin(Mathf.Deg2Rad * 30f)).normalized;
@@ -74,7 +75,7 @@ public class Cable : MonoBehaviour
     private void CheckForConnections()
     {
         _connectedPumps.Clear();
-        _connectedCables.Clear();
+        _newConnectedCables.Clear();
 
         gameObject.layer = 2;
 
@@ -91,6 +92,16 @@ public class Cable : MonoBehaviour
         CheckHit(3);
 
         gameObject.layer = _defaultLayer;
+
+        // Discard old pipes that aren't connected anymore
+        for (int i = _connectedCables.Count - 1; i >= 0; i--)
+        {
+            Cable cable = _connectedCables[i];
+            if (!_newConnectedCables.Contains(cable))
+            {
+                _connectedCables.RemoveAt(i); // Remove by index
+            }
+        }
     }
 
     private void CheckHit(int direction)
@@ -119,7 +130,15 @@ public class Cable : MonoBehaviour
         bool connected = false;
         if (_hit.collider.CompareTag("Cable"))
         {
-            _connectedCables.Add(_hit.collider.GetComponent<Cable>());
+            Cable cable = _hit.collider.GetComponent<Cable>();
+
+            _newConnectedCables.Add(cable);
+
+            if (!_connectedCables.Contains(cable))
+            {
+                _connectedCables.Add(cable);
+            }
+
             connected = true;
         }
         else if (_hit.collider.CompareTag("WaterSourcePump"))
@@ -129,6 +148,18 @@ public class Cable : MonoBehaviour
         }
         else if (_hit.collider.CompareTag("JunctionBox"))
         {
+            Cable cable = _hit.collider.GetComponent<JunctionBox>().GetConnectedCable(this);
+
+            if (cable != null)
+            {
+                _newConnectedCables.Add(cable);
+
+                if (!_connectedCables.Contains(cable))
+                {
+                    _connectedCables.Add(cable);
+                }
+            }
+
             connected = true;
         }
         else if (_hit.collider.CompareTag("PowerSource"))
@@ -263,7 +294,10 @@ public class Cable : MonoBehaviour
 
     public void AddCable(Cable cable)
     {
-        _connectedCables.Add(cable);
+        if (!_connectedCables.Contains(cable))
+        {
+            _connectedCables.Add(cable);
+        }
     }
 
     public List<Cable> GetattachedCables()

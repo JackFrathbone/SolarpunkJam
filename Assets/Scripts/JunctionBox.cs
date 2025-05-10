@@ -55,7 +55,7 @@ public class JunctionBox : MonoBehaviour
     private void FixedUpdate()
     {
         CheckForConnections();
-        BridgeConnections();
+        //BridgeConnections();
     }
 
     private void BridgeConnections()
@@ -153,6 +153,38 @@ public class JunctionBox : MonoBehaviour
             {
                 _connectedCableLower = _hit.collider.GetComponent<Cable>();
             }
+        }
+    }
+
+    public WaterPipe GetConnectedWaterPipe(WaterPipe pipe)
+    {
+        if (_connectedWaterPipeUpper != pipe)
+        {
+            return _connectedWaterPipeUpper;
+        }
+        else if (_connectedWaterPipeLower != pipe)
+        {
+            return _connectedWaterPipeLower;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public Cable GetConnectedCable(Cable cable)
+    {
+        if (_connectedCableUpper != cable)
+        {
+            return _connectedCableUpper;
+        }
+        else if (_connectedCableLower != cable)
+        {
+            return _connectedCableLower;
+        }
+        else
+        {
+            return null;
         }
     }
 
