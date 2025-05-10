@@ -1861,8 +1861,8 @@ MonoBehaviour:
   _waterPipeCounter: {fileID: 7147767338145095741}
   _partsCounter: {fileID: 9093084482041277305}
   _cableCounter: {fileID: 8622225745387892370}
+  _playerName: Dustin Dassie
   _dialogue: {fileID: 1710389073131252987}
-  _characterNameLabel: {fileID: 5617970958614308591}
   _dialogueText: {fileID: 5032484907781977284}
   _nextButton: {fileID: 8862153561358227272}
   _playerPotrait: {fileID: 2451120806565204535}

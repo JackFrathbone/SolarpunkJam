@@ -111,8 +111,6 @@ public class JunctionBox : MonoBehaviour
             CheckHitWaterPipe(3);
         }
 
-
-
         gameObject.layer = 0;
     }
 

@@ -13,9 +13,10 @@ public class UIManager : MonoService
     [SerializeField] TextMeshProUGUI _partsCounter;
     [SerializeField] TextMeshProUGUI _cableCounter;
 
+    [SerializeField] private string _playerName;
+
     //Dialogue
     [SerializeField] private GameObject _dialogue;
-    [SerializeField] private TextMeshProUGUI _characterNameLabel;
     [SerializeField] private TextMeshProUGUI _dialogueText;
     [SerializeField] private Button _nextButton;
     [SerializeField] private Image _playerPotrait;
@@ -35,6 +36,8 @@ public class UIManager : MonoService
     [Header("Data")]
     private DialogueObject _currentDialogueObject;
     private int _currentDialogueIndex;
+
+    private string _currentCharacterName;
 
     private void Start()
     {
@@ -79,7 +82,7 @@ public class UIManager : MonoService
             _playerPotrait.transform.localScale = new Vector3(1f, 1f, 1f);
             _dialogueGO.GetComponent<Image>().sprite = _dialogueLeftImg;
             _speakerName.GetComponent<Transform>().position = _speakerNameLeft.position;
-
+            _speakerName.text = _playerName;
         }
         else
         {
@@ -87,6 +90,7 @@ public class UIManager : MonoService
             _playerPotrait.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             _dialogueGO.GetComponent<Image>().sprite = _dialogueRightImg;
             _speakerName.GetComponent<Transform>().position = _speakerNameRight.position;
+            _speakerName.text = _currentCharacterName;
         }
 
         _dialogueText.text = dialogue.dialogueText;
@@ -102,7 +106,7 @@ public class UIManager : MonoService
         }
 
         _dialogue.SetActive(true);
-        _characterNameLabel.text = characterName;
+        _currentCharacterName = characterName;
 
         _currentDialogueObject = dialogueObject;
         _currentDialogueIndex = 0;
