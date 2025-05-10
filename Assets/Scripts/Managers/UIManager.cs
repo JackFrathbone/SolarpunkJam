@@ -151,6 +151,11 @@ public class UIManager : MonoService
     {
         bool currentMode = _gameManager.Value.SwitchPlayerPlacementMode();
 
+        SetPlacementModeVisuals(currentMode);
+    }
+
+    public void SetPlacementModeVisuals(bool currentMode)
+    {
         if (currentMode)
         {
             _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Cables";

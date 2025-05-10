@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SwitchMode();
+                _uiManager.Value.SetPlacementModeVisuals(_placingCables);
             }
 
             _horizontalInput = Input.GetAxis("Horizontal");
