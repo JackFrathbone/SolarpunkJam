@@ -1,7 +1,8 @@
 using RenderHeads.Services;
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.U2D;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoService
@@ -13,9 +14,12 @@ public class UIManager : MonoService
     [SerializeField] TextMeshProUGUI _partsCounter;
     [SerializeField] TextMeshProUGUI _cableCounter;
 
+    [SerializeField] private string _playerName;
+
+    [SerializeField] private GameObject _quitMenu;
+
     //Dialogue
     [SerializeField] private GameObject _dialogue;
-    [SerializeField] private TextMeshProUGUI _characterNameLabel;
     [SerializeField] private TextMeshProUGUI _dialogueText;
     [SerializeField] private Button _nextButton;
     [SerializeField] private Image _playerPotrait;
@@ -32,9 +36,14 @@ public class UIManager : MonoService
     [SerializeField] private Sprite _modePipesImg;
     [SerializeField] private Sprite _modeCablesImg;
 
+    [SerializeField] private AudioClip _clickPopClip;
+    [SerializeField] private AudioClip _switchBloopClip;
+
     [Header("Data")]
     private DialogueObject _currentDialogueObject;
     private int _currentDialogueIndex;
+
+    private string _currentCharacterName;
 
     private void Start()
     {
@@ -44,6 +53,26 @@ public class UIManager : MonoService
         _modeButton.onClick.AddListener(SwitchPlacementMode);
         _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Pipes";
         _modeButton.GetComponent<Image>().sprite = _modePipesImg;
+
+        _quitMenu.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            _quitMenu.SetActive(true);
+        }
+    }
+
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void CancelQuit()
+    {
+        _quitMenu.SetActive(false);
     }
 
     public void SetWaterPipeCounter(int i)
@@ -79,7 +108,7 @@ public class UIManager : MonoService
             _playerPotrait.transform.localScale = new Vector3(1f, 1f, 1f);
             _dialogueGO.GetComponent<Image>().sprite = _dialogueLeftImg;
             _speakerName.GetComponent<Transform>().position = _speakerNameLeft.position;
-
+            _speakerName.text = _playerName;
         }
         else
         {
@@ -87,6 +116,7 @@ public class UIManager : MonoService
             _playerPotrait.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             _dialogueGO.GetComponent<Image>().sprite = _dialogueRightImg;
             _speakerName.GetComponent<Transform>().position = _speakerNameRight.position;
+            _speakerName.text = _currentCharacterName;
         }
 
         _dialogueText.text = dialogue.dialogueText;
@@ -102,7 +132,7 @@ public class UIManager : MonoService
         }
 
         _dialogue.SetActive(true);
-        _characterNameLabel.text = characterName;
+        _currentCharacterName = characterName;
 
         _currentDialogueObject = dialogueObject;
         _currentDialogueIndex = 0;
@@ -131,6 +161,9 @@ public class UIManager : MonoService
     public void NextDialogue()
     {
         _currentDialogueIndex++;
+
+        _gameManager.Value.PlayAudioClip(_clickPopClip, 0.9f, Random.Range(1.25f, 1.5f));
+
         if (SetDialogueText())
         {
             EndDialogue();
@@ -151,6 +184,13 @@ public class UIManager : MonoService
     {
         bool currentMode = _gameManager.Value.SwitchPlayerPlacementMode();
 
+        SetPlacementModeVisuals(currentMode);
+    }
+
+    public void SetPlacementModeVisuals(bool currentMode)
+    {
+        _gameManager.Value.PlayAudioClip(_switchBloopClip, 1f, 1f);
+
         if (currentMode)
         {
             _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Cables";
@@ -162,5 +202,4 @@ public class UIManager : MonoService
             _modeButton.GetComponent<Image>().sprite = _modePipesImg;
         }
     }
-
 }

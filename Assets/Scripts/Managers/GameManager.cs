@@ -1,4 +1,5 @@
 using RenderHeads.Services;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoService
@@ -6,10 +7,14 @@ public class GameManager : MonoService
     [Header("References")]
     public PlayerController playerController;
     public AudioSource universalAudioSource;
-
     private void Awake()
     {
         universalAudioSource = gameObject.AddComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(StartMute());
     }
 
     public void PlayAudioClip(AudioClip clip, float volume, float pitch)
@@ -36,5 +41,12 @@ public class GameManager : MonoService
         }
 
         return false;
+    }
+
+    IEnumerator StartMute()
+    {
+        universalAudioSource.mute = true;
+        yield return new WaitForSeconds(2f);
+        universalAudioSource.mute = false;
     }
 }

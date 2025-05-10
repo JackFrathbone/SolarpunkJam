@@ -17,7 +17,18 @@ public class WorldWaterManager : MonoService
 
     private List<Cable> _cablesActive = new();
 
+    private void Start()
+    {
+        //InvokeRepeating("RunUpdate", 1f, 1f);
+    }
+
     private void FixedUpdate()
+    {
+        CalculateWaterFlow();
+        CalculateElectricityConnections();
+    }
+
+    private void RunUpdate()
     {
         CalculateWaterFlow();
         CalculateElectricityConnections();
