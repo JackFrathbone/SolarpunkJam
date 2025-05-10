@@ -1,6 +1,8 @@
 using RenderHeads.Services;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoService
@@ -13,6 +15,8 @@ public class UIManager : MonoService
     [SerializeField] TextMeshProUGUI _cableCounter;
 
     [SerializeField] private string _playerName;
+
+    [SerializeField] private GameObject _quitMenu;
 
     //Dialogue
     [SerializeField] private GameObject _dialogue;
@@ -49,6 +53,26 @@ public class UIManager : MonoService
         _modeButton.onClick.AddListener(SwitchPlacementMode);
         _modeButton.GetComponentInChildren<TextMeshProUGUI>().text = "Pipes";
         _modeButton.GetComponent<Image>().sprite = _modePipesImg;
+
+        _quitMenu.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            _quitMenu.SetActive(true);
+        }
+    }
+
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void CancelQuit()
+    {
+        _quitMenu.SetActive(false);
     }
 
     public void SetWaterPipeCounter(int i)
@@ -178,5 +202,4 @@ public class UIManager : MonoService
             _modeButton.GetComponent<Image>().sprite = _modePipesImg;
         }
     }
-
 }
