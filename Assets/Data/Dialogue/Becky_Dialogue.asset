@@ -29,3 +29,35 @@ MonoBehaviour:
 
 '
     isPlayer: 0
+  - dialogueText: 'Hiiiii! I''m BECKY! Nice to meeeeet youuuu! I''m from America
+      and I''m totally exicted you''re here! <3 '
+    isPlayer: 0
+  - dialogueText: 'Hi Becky! I''m Dustin. Dr. Busuku said I should chat to you about
+      getting PARTS? '
+    isPlayer: 1
+  - dialogueText: YESSSSS! I'm studying to be a doctor like Dr Busuku. I love his
+      vibe! <3 and I LOVE your coutry!!
+    isPlayer: 0
+  - dialogueText: I'm learning sooooo much about your history. Idk about the statue
+      at the Town Hall, it seems like Jan Van Reebok's past was kinda complicated...
+    isPlayer: 0
+  - dialogueText: Uh...yeah, um about those PART-
+    isPlayer: 1
+  - dialogueText: ALSO! I LOVED "Cry the Beloved Dassie'! Such a great read! We gotta
+      bring it to schools in the USA, we have so much to learn from you!
+    isPlayer: 0
+  - dialogueText: It's a favourite book of mine too. So back to the topic at hand
+      Becky, those PARTS?
+    isPlayer: 1
+  - dialogueText: Oh yeah! So like, I've got a pretty good eco-friendly setup here
+      and I wanna help the whole town get eco-friendly too!
+    isPlayer: 0
+  - dialogueText: But like, that doesn't mean just turning everything green!  We
+      need deserts like the Karoo, not everywhere should look like Yosemite forrest.
+      Being here made me realize that! Ca't just throw in more trees everywhere and
+      call it a day!
+    isPlayer: 0
+  - dialogueText: So like, you can go ahead and dismantle my solar panel for PARTS
+      to help get the clinic that renewable energy! We're all in this together ya
+      know <3
+    isPlayer: 0

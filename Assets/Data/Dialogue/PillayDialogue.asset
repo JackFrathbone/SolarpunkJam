@@ -37,8 +37,12 @@ MonoBehaviour:
     isPlayer: 0
   - dialogueText: Happy to help.
     isPlayer: 1
-  - dialogueText: "You must go talk to RICKY and MARIANNE. Such a lovely couple they
-      are. \r\nThey have lived here for a long time and are now using their land
-      to set up the new COMMUNITY CENTRE and FARM. They\u2019ll tell you how to get
-      the farm's water source hooked up. \n\nGood luck and Godspeed handyman! \r"
+  - dialogueText: "\rWhat we really want now is to get all of our spare water to
+      the farm, but that will require you to connect both the neighbourhoods up to
+      our central system. Chat to our head farmer RICKY about that."
+    isPlayer: 0
+  - dialogueText: "But, firstly you must go talk to MARIANNE. Such a lovely lady
+      she is. \r\nShe has lived here for a long time and is now using her land to
+      set up the new COMMUNITY CENTRE. She'll show you where to get started. \n\nGood
+      luck and Godspeed handyman! \r"
     isPlayer: 0

@@ -33,9 +33,13 @@ MonoBehaviour:
     isPlayer: 0
   - dialogueText: Ja, okay Marianne, what can ek do for you today?
     isPlayer: 1
+  - dialogueText: "Our little community centre is up and running! It has done so
+      so much for us but it has a long long way to go. But YOU can help us get there!\r"
+    isPlayer: 0
   - dialogueText: We have setup a nice VEGETABLE GARDEN but we need IRRIGATION to
       actually grow some yummy lekker veg.
-    isPlayer: 1
+    isPlayer: 0
   - dialogueText: Please go chat to GANIEF. He's got a natural green thumb (or should
-      I say hoof!). He has some CABLES and PIPES to help get that water flowing!
-    isPlayer: 1
+      I say hoof!). He has some CABLES and PIPES give to us from another town over
+      to help get that water flowing!
+    isPlayer: 0

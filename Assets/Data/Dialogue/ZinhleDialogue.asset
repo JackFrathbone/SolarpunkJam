@@ -21,3 +21,21 @@ MonoBehaviour:
       [Exciting to see town coming
       together and sustainable for adult life]'
     isPlayer: 0
+  - dialogueText: HIIIIIII! I'm ZINHLE, nice to meet you! Are you the "hammy man"
+      my mommy told me about? Are you going to bring water back to the town? I want
+      the ducks and frogs to come play with me again!
+    isPlayer: 0
+  - dialogueText: Hi Zinhle! Yes I am. We'll get mister ducky and froggy back to
+      town in no time!
+    isPlayer: 1
+  - dialogueText: Yayyyyyy! Are you going to use that BIG Water tank to do it?! My
+      mommy says that "sussainability" is important and when I grow up  MY KIDS are
+      going to live in a beter world with "wenewable" energy!
+    isPlayer: 0
+  - dialogueText: Ja, that's the plan. Me and Dusty Dorp want to make sure you have
+      a lekker time growing up Zinhle! That water tank and the solar panels are going
+      to do just that.
+    isPlayer: 1
+  - dialogueText: Good luck "hammy man"! I'm gonna go play with Marianne now, she
+      says she's got new toys for me at the "comoonity" centre. Bye bye!
+    isPlayer: 0

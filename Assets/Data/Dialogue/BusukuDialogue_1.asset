@@ -23,3 +23,6 @@ MonoBehaviour:
       [Indingouns
       and western]'
     isPlayer: 0
+  - dialogueText: "Molo Mister Handyman! Kunjani? (How are you)\r\n\rBoy, we are
+      glad to see you."
+    isPlayer: 0

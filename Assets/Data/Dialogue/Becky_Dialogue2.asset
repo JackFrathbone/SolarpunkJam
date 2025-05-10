@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Becky_Dialogue2
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Gives parts for clinic]
+  - dialogueText: 'Thank you for helping out Dusty Dorp Becky! You really seem to
+      care about this town. '
+    isPlayer: 1
+  - dialogueText: 'Anytime Dustin! <3
 
+      I love this town and now I love you
+      too!
 
-'
+      Tell Dr. Busuku I say Hiiiiiii!'
     isPlayer: 0

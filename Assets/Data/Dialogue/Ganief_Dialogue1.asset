@@ -20,3 +20,22 @@ MonoBehaviour:
 
       [Done go to other side of the road to jon]'
     isPlayer: 0
+  - dialogueText: Hello Mister. Name's GANIEF, the local BOTANIST. So you're going
+      to help get us get our local little garden up and running ey?
+    isPlayer: 0
+  - dialogueText: 'Ja, that''s the plan. '
+    isPlayer: 1
+  - dialogueText: Nice. I'll give you some veggies and my mom's famous soup recipe
+      if you can get us growing. (It's the best soup you'll ever have!)
+    isPlayer: 0
+  - dialogueText: Haha. Looking forward to it.
+    isPlayer: 1
+  - dialogueText: Same here. You can join us for our lunch gathering if you have
+      the time. It's be so nice to see everyone come  to eat a homegrown meal we've
+      prepared together.
+    isPlayer: 0
+  - dialogueText: Jon's been a real blessing making meals for [HELP-
+    isPlayer: 0
+  - dialogueText: Now then, here's some cables and pipes. Let's get that water flowing
+      and our veggies growing!
+    isPlayer: 0

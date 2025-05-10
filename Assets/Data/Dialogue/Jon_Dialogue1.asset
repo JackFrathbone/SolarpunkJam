@@ -25,3 +25,21 @@ MonoBehaviour:
 
       [Great seeing everyone do their share]'
     isPlayer: 0
+  - dialogueText: 'So, the handyman has come to the dustier side of Dusty Dorp? We''ll
+      that''s good to see you''ll be helping ALL  of the town. '
+    isPlayer: 0
+  - dialogueText: I'm your man and that's the plan!
+    isPlayer: 1
+  - dialogueText: We've been sharing resources with each other on this side of town
+      long before day zero hit. But it's been good to see everyone is coming around
+      to "sharing is caring".
+    isPlayer: 0
+  - dialogueText: 'It''s funny thing hey. We''re taught that kind of stuff in primary
+      school but sometimes it takes a proper kick up the butt like day zero for those
+      lessons to kick in! '
+    isPlayer: 1
+  - dialogueText: Hehe you're a wise dassie.  Okay then [TUTORIAL STUFF]
+    isPlayer: 0
+  - dialogueText: Now that you know what's up once you're done, hook stuff up to
+      the town.
+    isPlayer: 0
