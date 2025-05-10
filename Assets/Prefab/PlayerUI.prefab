@@ -1114,10 +1114,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Test
+  m_text: 'Hello. This is a test message?
+
+    HELL0! THIS IS A TEST MESSAGE?'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 05ee6f4cda7d81b4fa60eace14eafee0, type: 2}
-  m_sharedMaterial: {fileID: -8030193517695642202, guid: 05ee6f4cda7d81b4fa60eace14eafee0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 921e69df6a8e7a649a7200215e9d058f, type: 2}
+  m_sharedMaterial: {fileID: -1234575917102132616, guid: 921e69df6a8e7a649a7200215e9d058f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1147,7 +1149,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 40
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
