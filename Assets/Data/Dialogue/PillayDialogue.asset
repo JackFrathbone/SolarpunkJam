@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: PillayDialogue
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogueText: '[Talking about town coming together after day zero] + [people
-      go without, bad, we need to help each other and share] + [Chat to the farmer
-      otherwise go to the community centre]'
-    isPlayer: 0
   - dialogueText: "Good morning! You must be the Handyman we've heard about. Nice
       to meet you son. I'm FATHER PILLAY. \n\nWhat can I do for you?"
     isPlayer: 0
