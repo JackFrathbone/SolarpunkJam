@@ -21,3 +21,9 @@ MonoBehaviour:
   - dialogueText: 'Oh! I see you''re the handyman we sent for. If you want to know
       more about the water situation on this side of town chat to my husband RIAAD. '
     isPlayer: 0
+  - dialogueText: RIAAD and I have been together for many many years. Though times
+      were tough and it was hard to be together back in the old South Africa, we're
+      still going strong! Over 50 years this year!
+    isPlayer: 0
+  - dialogueText: You look like a very sweet couple ma'am!
+    isPlayer: 1
