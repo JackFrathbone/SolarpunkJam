@@ -105,14 +105,14 @@ public class UIManager : MonoService
         if (dialogue.isPlayer)
         {
             _characterPotrait.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-            _playerPotrait.transform.localScale = new Vector3(1f, 1f, 1f);
+            _playerPotrait.transform.localScale = new Vector3(0.95f, 0.95f, 0.95f);
             _dialogueGO.GetComponent<Image>().sprite = _dialogueLeftImg;
             _speakerName.GetComponent<Transform>().position = _speakerNameLeft.position;
             _speakerName.text = _playerName;
         }
         else
         {
-            _characterPotrait.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            _characterPotrait.transform.localScale = new Vector3(0.95f, 0.95f, 0.95f);
             _playerPotrait.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             _dialogueGO.GetComponent<Image>().sprite = _dialogueRightImg;
             _speakerName.GetComponent<Transform>().position = _speakerNameRight.position;
